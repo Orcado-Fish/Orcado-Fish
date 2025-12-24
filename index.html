@@ -3,72 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orcado Fish</title>
+<title>Orcado Fish Pro</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
-/* ---------------- BODY & BACKGROUND ---------------- */
+/* --------------- GLOBAL --------------- */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Roboto', sans-serif;
     background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
-    overflow-x: hidden;
-    animation: wave 20s linear infinite;
+    color: #333;
+    scroll-behavior: smooth;
 }
 
-@keyframes wave {
-    0% { background-position: 0 0; }
-    100% { background-position: 1000px 0; }
+/* --------------- HEADER / HERO --------------- */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(135deg, #00cfff, #007bff);
+    color: white;
+    position: relative;
+    overflow: hidden;
 }
 
-/* ---------------- CONTAINER ---------------- */
-.container {
-    background: rgba(255,255,255,0.95);
-    padding: 30px 25px;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,123,255,0.2);
-    animation: float 4s ease-in-out infinite;
+header .logo {
+    width: 130px;
+    animation: float 3s ease-in-out infinite;
 }
 
+header h1 {
+    font-size: 2.5rem;
+    margin: 20px 0 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+header button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: none;
+    background: white;
+    color: #007bff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+header button:hover {
+    transform: scale(1.05);
+}
+
+/* Hero float animation */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
-/* ---------------- LOGO ---------------- */
-.logo-box {
+/* --------------- CONTAINER / FORM --------------- */
+.container {
+    background: rgba(255,255,255,0.95);
+    padding: 40px 30px;
+    max-width: 600px;
+    margin: -40px auto 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,123,255,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.container h2 {
     text-align: center;
-    margin-bottom: 15px;
+    color: #007bff;
+    margin-bottom: 25px;
 }
 
-.logo-box img {
-    width: 120px;
-    display: inline-block;
-    transition: transform 0.5s ease;
-}
-
-.logo-box img:hover {
-    transform: scale(1.2) rotate(10deg);
-}
-
-/* ---------------- HEADINGS ---------------- */
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #007BFF;
-}
-
-/* ---------------- FORM ---------------- */
 label {
     font-weight: bold;
     display: block;
     margin-top: 15px;
-    color: #333;
 }
 
 input, select, button {
@@ -88,56 +104,79 @@ input:focus, select:focus {
     outline: none;
 }
 
-/* ---------------- BUTTON ---------------- */
-button {
+button.submit-btn {
     margin-top: 20px;
     background: linear-gradient(45deg, #007BFF, #00CFFF);
     color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
     font-weight: bold;
     border-radius: 25px;
+    border: none;
+    cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-button:hover {
+button.submit-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0,123,255,0.3);
 }
 
-/* ---------------- STATUS ---------------- */
+/* Status message */
 #status {
     text-align: center;
     margin-top: 15px;
     font-weight: bold;
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 600px) {
-    .container {
-        padding: 20px 15px;
-    }
-    input, select, button {
-        font-size: 13px;
-        padding: 10px;
-    }
+/* --------------- TABLE --------------- */
+#boatTable {
+    width: 95%;
+    max-width: 1000px;
+    margin: 30px auto 50px;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#boatTable th, #boatTable td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#boatTable th {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+#boatTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* --------------- RESPONSIVE --------------- */
+@media (max-width: 650px) {
+    .container { padding: 25px 20px; }
+    input, select, button { font-size: 13px; padding: 10px; }
+    #boatTable { font-size: 12px; }
 }
 </style>
 </head>
 <body>
 
+<!-- HERO -->
+<header>
+    <img src="logo.png" class="logo" alt="Orcado Fish Logo">
+    <h1>Orcado Fish</h1>
+    <p>Manage Your Boats Effortlessly</p>
+    <button onclick="document.getElementById('boatForm').scrollIntoView({behavior:'smooth'});">Add Your Boat</button>
+</header>
+
+<!-- FORM -->
 <div class="container">
-
-    <!-- LOGO -->
-    <div class="logo-box">
-        <img src="logo.png" alt="Orcado Fish Logo">
-    </div>
-
-    <h2>Orcado Fish</h2>
-
+    <h2>Boat Submission Form</h2>
     <form id="boatForm">
-
         <label>Boat Name</label>
         <input type="text" id="boatName" placeholder="Enter boat name" required>
 
@@ -169,14 +208,35 @@ button:hover {
         <label>Wireless No</label>
         <input type="text" id="wirelessNo" placeholder="Enter wireless number">
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit-btn">Submit</button>
         <p id="status"></p>
     </form>
 </div>
 
-<!-- Firebase -->
+<!-- LIVE TABLE -->
+<table id="boatTable">
+    <thead>
+        <tr>
+            <th>Boat Name</th>
+            <th>Location</th>
+            <th>Owner Name</th>
+            <th>Reg. No</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Subscription Active</th>
+            <th>Finish Date</th>
+            <th>Wireless No</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<!-- CONFETTI -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <script>
 const firebaseConfig = {
@@ -190,10 +250,11 @@ const firebaseConfig = {
     measurementId: "G-3QR55DB06K"
 };
 firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const tableBody = document.getElementById("tableBody");
 
-var database = firebase.database();
-
-document.getElementById("boatForm").addEventListener("submit", function(e) {
+// FORM SUBMISSION
+document.getElementById("boatForm").addEventListener("submit", function(e){
     e.preventDefault();
 
     const boatName = document.getElementById("boatName").value.trim();
@@ -206,33 +267,40 @@ document.getElementById("boatForm").addEventListener("submit", function(e) {
     const finishDate = document.getElementById("finishDate").value;
     const wirelessNo = document.getElementById("wirelessNo").value.trim();
 
-    // Check required fields
-    if (!boatName || !location || !ownerName || !registrationNumber || !mobile || !email || !subscriptionActive || !finishDate || !wirelessNo) {
+    if(!boatName || !location || !ownerName || !registrationNumber || !mobile || !email || !subscriptionActive || !finishDate || !wirelessNo){
         document.getElementById("status").style.color = "red";
-        document.getElementById("status").innerHTML = "❌ Please fill ALL fields before submitting";
+        document.getElementById("status").innerHTML = "❌ Please fill ALL fields";
         return;
     }
 
-    // Save to Firebase
-    database.ref("boats").push({
-        boatName,
-        location,
-        ownerName,
-        registrationNumber,
-        mobile,
-        email,
-        subscriptionActive,
-        finishDate,
-        wirelessNo
-    });
+    const newBoat = {boatName, location, ownerName, registrationNumber, mobile, email, subscriptionActive, finishDate, wirelessNo};
+    database.ref("boats").push(newBoat);
 
     document.getElementById("status").style.color = "green";
-    document.getElementById("status").innerHTML = "✅ Data Saved Successfully!";
+    document.getElementById("status").innerHTML = "✅ Data Saved!";
+    confetti({ particleCount: 100, spread: 70, origin: {y:0.6} });
 
     this.reset();
 });
-</script>
 
+// LIVE TABLE
+database.ref("boats").on("value", function(snapshot){
+    tableBody.innerHTML = "";
+    snapshot.forEach(function(child){
+        const data = child.val();
+        tableBody.innerHTML += `<tr>
+            <td>${data.boatName}</td>
+            <td>${data.location}</td>
+            <td>${data.ownerName}</td>
+            <td>${data.registrationNumber}</td>
+            <td>${data.mobile}</td>
+            <td>${data.email}</td>
+            <td>${data.subscriptionActive}</td>
+            <td>${data.finishDate}</td>
+            <td>${data.wirelessNo}</td>
+        </tr>`;
+    });
+});
+</script>
 </body>
 </html>
-

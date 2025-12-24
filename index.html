@@ -1,84 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Boat Subscription Details</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-        form {
-            background: white;
-            padding: 20px;
-            max-width: 500px;
-            margin: auto;
-            border-radius: 8px;
-        }
-        input, select, button {
-            width: 100%;
-            padding: 8px;
-            margin-top: 8px;
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orcado Fish</title>
+<style>
+/* ---------------- BODY & BACKGROUND ---------------- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
+    overflow-x: hidden;
+    animation: wave 20s linear infinite;
+}
 
+@keyframes wave {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* ---------------- CONTAINER ---------------- */
+.container {
+    background: rgba(255,255,255,0.95);
+    padding: 30px 25px;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,123,255,0.2);
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ---------------- LOGO ---------------- */
+.logo-box {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.logo-box img {
+    width: 120px;
+    display: inline-block;
+    transition: transform 0.5s ease;
+}
+
+.logo-box img:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* ---------------- HEADINGS ---------------- */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+/* ---------------- FORM ---------------- */
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #333;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px #007BFF;
+    outline: none;
+}
+
+/* ---------------- BUTTON ---------------- */
+button {
+    margin-top: 20px;
+    background: linear-gradient(45deg, #007BFF, #00CFFF);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,123,255,0.3);
+}
+
+/* ---------------- STATUS ---------------- */
+#status {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 15px;
+    }
+    input, select, button {
+        font-size: 13px;
+        padding: 10px;
+    }
+}
+</style>
+</head>
 <body>
 
-<h2 align="center">Boat Subscription Form</h2>
+<div class="container">
 
-<form id="boatForm">
+    <!-- LOGO -->
+    <div class="logo-box">
+        <img src="logo.png" alt="Orcado Fish Logo">
+    </div>
 
-    Boat Name:
-    <input type="text" id="boatName" required>
+    <h2>Orcado Fish</h2>
 
-    Location:
-    <input type="text" id="location" required>
+    <form id="boatForm">
 
-    Boat Owner Name:
-    <input type="text" id="ownerName" required>
+        <label>Boat Name</label>
+        <input type="text" id="boatName" placeholder="Enter boat name" required>
 
-    Boat Registration Number:
-    <input type="text" id="registrationNumber" required>
+        <label>Location</label>
+        <input type="text" id="location" placeholder="Enter location" required>
 
-    Mobile No:
-    <input type="tel" id="mobile" required>
+        <label>Boat Owner Name</label>
+        <input type="text" id="ownerName" placeholder="Enter owner name" required>
 
-    Email ID:
-    <input type="email" id="email" required>
+        <label>Boat Registration Number</label>
+        <input type="text" id="registrationNumber" placeholder="Enter registration number" required>
 
-    Subscription Active:
-    <select id="subscriptionActive" required>
-        <option value="">Select</option>
-        <option value="Yes">Yes</option>
-        <option value="No">No</option>
-    </select>
+        <label>Mobile No</label>
+        <input type="tel" id="mobile" placeholder="Enter mobile number" required>
 
-    Subscription Finish Date:
-    <input type="date" id="finishDate">
+        <label>Email ID</label>
+        <input type="email" id="email" placeholder="Enter email address" required>
 
-    Wireless No:
-    <input type="text" id="wirelessNo">
+        <label>Subscription Active</label>
+        <select id="subscriptionActive" required>
+            <option value="">Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
 
-    <br><br>
-    <button type="submit">Submit</button>
+        <label>Subscription Finish Date</label>
+        <input type="date" id="finishDate">
 
-    <p id="status"></p>
-</form>
+        <label>Wireless No</label>
+        <input type="text" id="wirelessNo" placeholder="Enter wireless number">
+
+        <button type="submit">Submit</button>
+        <p id="status"></p>
+    </form>
+</div>
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
 <script>
-    // 🔴 PASTE YOUR FIREBASE CONFIG HERE
-    const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBgHSbR6Q_za_uSjxpNwfPGh2xx4QSYpEY",
     authDomain: "orcadofish.firebaseapp.com",
     databaseURL: "https://orcadofish-default-rtdb.firebaseio.com",
@@ -87,31 +188,49 @@
     messagingSenderId: "138005449504",
     appId: "1:138005449504:web:897c9d263541ec1a926545",
     measurementId: "G-3QR55DB06K"
-  };
+};
+firebase.initializeApp(firebaseConfig);
 
+var database = firebase.database();
 
-    firebase.initializeApp(firebaseConfig);
+document.getElementById("boatForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    var database = firebase.database();
+    const boatName = document.getElementById("boatName").value.trim();
+    const location = document.getElementById("location").value.trim();
+    const ownerName = document.getElementById("ownerName").value.trim();
+    const registrationNumber = document.getElementById("registrationNumber").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subscriptionActive = document.getElementById("subscriptionActive").value;
+    const finishDate = document.getElementById("finishDate").value;
+    const wirelessNo = document.getElementById("wirelessNo").value.trim();
 
-    document.getElementById("boatForm").addEventListener("submit", function(e) {
-        e.preventDefault();
+    // Check required fields
+    if (!boatName || !location || !ownerName || !registrationNumber || !mobile || !email || !subscriptionActive || !finishDate || !wirelessNo) {
+        document.getElementById("status").style.color = "red";
+        document.getElementById("status").innerHTML = "❌ Please fill ALL fields before submitting";
+        return;
+    }
 
-        database.ref("boats").push({
-            boatName: document.getElementById("boatName").value,
-            location: document.getElementById("location").value,
-            ownerName: document.getElementById("ownerName").value,
-            registrationNumber: document.getElementById("registrationNumber").value,
-            mobile: document.getElementById("mobile").value,
-            email: document.getElementById("email").value,
-            subscriptionActive: document.getElementById("subscriptionActive").value,
-            finishDate: document.getElementById("finishDate").value,
-            wirelessNo: document.getElementById("wirelessNo").value
-        });
-
-        document.getElementById("status").innerHTML = "✅ Data Saved Successfully";
-        this.reset();
+    // Save to Firebase
+    database.ref("boats").push({
+        boatName,
+        location,
+        ownerName,
+        registrationNumber,
+        mobile,
+        email,
+        subscriptionActive,
+        finishDate,
+        wirelessNo
     });
+
+    document.getElementById("status").style.color = "green";
+    document.getElementById("status").innerHTML = "✅ Data Saved Successfully!";
+
+    this.reset();
+});
 </script>
 
 </body>

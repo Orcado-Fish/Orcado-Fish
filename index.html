@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orcado Fish Pro</title>
-<!-- Google Fonts -->
+<title>Orcado Fish</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-/* --------------- GLOBAL --------------- */
+/* ---------------- GLOBAL ---------------- */
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -16,11 +14,34 @@ body {
     color: #333;
     scroll-behavior: smooth;
 }
+a { text-decoration: none; color: inherit; }
 
-/* --------------- HEADER / HERO --------------- */
+/* ---------------- NAVBAR ---------------- */
+nav {
+    display: flex;
+    justify-content: center;
+    background: #007BFF;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    margin: 0 20px;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00CFFF;
+}
+
+/* ---------------- HERO ---------------- */
 header {
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 80px 20px 60px;
     background: linear-gradient(135deg, #00cfff, #007bff);
     color: white;
     position: relative;
@@ -41,93 +62,41 @@ header p {
     font-size: 1.2rem;
 }
 
-header button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 25px;
-    border: none;
-    background: white;
-    color: #007bff;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-header button:hover {
-    transform: scale(1.05);
-}
-
-/* Hero float animation */
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
+    0%,100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
-/* --------------- CONTAINER / FORM --------------- */
+/* ---------------- CONTAINER ---------------- */
 .container {
     background: rgba(255,255,255,0.95);
     padding: 40px 30px;
     max-width: 600px;
-    margin: -40px auto 40px;
+    margin: 40px auto;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,123,255,0.2);
-    position: relative;
-    z-index: 1;
 }
 
-.container h2 {
-    text-align: center;
-    color: #007bff;
-    margin-bottom: 25px;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 15px;
-}
-
+/* FORM STYLING */
+label { font-weight: bold; display: block; margin-top: 15px; }
 input, select, button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    font-size: 14px;
+    width: 100%; padding: 12px; margin-top:5px;
+    border-radius:8px; border:1px solid #ccc; font-size:14px;
     transition: all 0.3s ease;
 }
-
-input:focus, select:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 5px #007BFF;
-    outline: none;
-}
+input:focus, select:focus { border-color:#007BFF; box-shadow:0 0 5px #007BFF; outline:none; }
 
 button.submit-btn {
     margin-top: 20px;
     background: linear-gradient(45deg, #007BFF, #00CFFF);
-    color: white;
-    font-weight: bold;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
+    color: white; font-weight: bold; border-radius:25px; border:none; cursor:pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+button.submit-btn:hover { transform: scale(1.05); box-shadow:0 5px 15px rgba(0,123,255,0.3); }
 
-button.submit-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,123,255,0.3);
-}
+#status { text-align:center; margin-top:15px; font-weight:bold; }
 
-/* Status message */
-#status {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-/* --------------- TABLE --------------- */
+/* ---------------- TABLE PAGE ---------------- */
 #boatTable {
     width: 95%;
     max-width: 1000px;
@@ -138,24 +107,13 @@ button.submit-btn:hover {
     border-radius: 10px;
     overflow: hidden;
 }
-
 #boatTable th, #boatTable td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+    padding: 10px; text-align:center; border-bottom:1px solid #ddd;
 }
+#boatTable th { background-color:#007BFF; color:white; }
+#boatTable tr:nth-child(even) { background-color:#f2f2f2; }
 
-#boatTable th {
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-}
-
-#boatTable tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-/* --------------- RESPONSIVE --------------- */
+/* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 650px) {
     .container { padding: 25px 20px; }
     input, select, button { font-size: 13px; padding: 10px; }
@@ -165,80 +123,84 @@ button.submit-btn:hover {
 </head>
 <body>
 
-<!-- HERO -->
-<header>
-    <img src="logo.png" class="logo" alt="Orcado Fish Logo">
-    <h1>Orcado Fish</h1>
-    <p>Manage Your Boats Effortlessly</p>
-    <button onclick="document.getElementById('boatForm').scrollIntoView({behavior:'smooth'});">Add Your Boat</button>
-</header>
+<!-- NAVIGATION -->
+<nav>
+    <a href="#home" onclick="showPage('home')">Home</a>
+    <a href="#addBoat" onclick="showPage('addBoat')">Add Boat</a>
+    <a href="#viewBoats" onclick="showPage('viewBoats')">View Boats</a>
+</nav>
 
-<!-- FORM -->
-<div class="container">
-    <h2>Boat Submission Form</h2>
-    <form id="boatForm">
-        <label>Boat Name</label>
-        <input type="text" id="boatName" placeholder="Enter boat name" required>
+<!-- PAGES -->
 
-        <label>Location</label>
-        <input type="text" id="location" placeholder="Enter location" required>
-
-        <label>Boat Owner Name</label>
-        <input type="text" id="ownerName" placeholder="Enter owner name" required>
-
-        <label>Boat Registration Number</label>
-        <input type="text" id="registrationNumber" placeholder="Enter registration number" required>
-
-        <label>Mobile No</label>
-        <input type="tel" id="mobile" placeholder="Enter mobile number" required>
-
-        <label>Email ID</label>
-        <input type="email" id="email" placeholder="Enter email address" required>
-
-        <label>Subscription Active</label>
-        <select id="subscriptionActive" required>
-            <option value="">Select</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-        </select>
-
-        <label>Subscription Finish Date</label>
-        <input type="date" id="finishDate">
-
-        <label>Wireless No</label>
-        <input type="text" id="wirelessNo" placeholder="Enter wireless number">
-
-        <button type="submit" class="submit-btn">Submit</button>
-        <p id="status"></p>
-    </form>
+<!-- HOME PAGE -->
+<div id="home" class="page">
+    <header>
+        <img src="logo.png" class="logo" alt="Orcado Fish Logo">
+        <h1>Orcado Fish</h1>
+        <p>Manage Your Boats Effortlessly</p>
+    </header>
 </div>
 
-<!-- LIVE TABLE -->
-<table id="boatTable">
-    <thead>
-        <tr>
-            <th>Boat Name</th>
-            <th>Location</th>
-            <th>Owner Name</th>
-            <th>Reg. No</th>
-            <th>Mobile</th>
-            <th>Email</th>
-            <th>Subscription Active</th>
-            <th>Finish Date</th>
-            <th>Wireless No</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-</table>
+<!-- ADD BOAT PAGE -->
+<div id="addBoat" class="page" style="display:none;">
+    <div class="container">
+        <h2>Boat Submission Form</h2>
+        <form id="boatForm">
+            <label>Boat Name</label>
+            <input type="text" id="boatName" placeholder="Enter boat name" required>
+            <label>Location</label>
+            <input type="text" id="location" placeholder="Enter location" required>
+            <label>Boat Owner Name</label>
+            <input type="text" id="ownerName" placeholder="Enter owner name" required>
+            <label>Boat Registration Number</label>
+            <input type="text" id="registrationNumber" placeholder="Enter registration number" required>
+            <label>Mobile No</label>
+            <input type="tel" id="mobile" placeholder="Enter mobile number" required>
+            <label>Email ID</label>
+            <input type="email" id="email" placeholder="Enter email address" required>
+            <label>Subscription Active</label>
+            <select id="subscriptionActive" required>
+                <option value="">Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label>Subscription Finish Date</label>
+            <input type="date" id="finishDate">
+            <label>Wireless No</label>
+            <input type="text" id="wirelessNo" placeholder="Enter wireless number">
+            <button type="submit" class="submit-btn">Submit</button>
+            <p id="status"></p>
+        </form>
+    </div>
+</div>
+
+<!-- VIEW BOATS PAGE -->
+<div id="viewBoats" class="page" style="display:none;">
+    <table id="boatTable">
+        <thead>
+            <tr>
+                <th>Boat Name</th>
+                <th>Location</th>
+                <th>Owner Name</th>
+                <th>Reg. No</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Subscription Active</th>
+                <th>Finish Date</th>
+                <th>Wireless No</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+</div>
 
 <!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
-<!-- CONFETTI -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <script>
+// ---------------- FIREBASE ----------------
 const firebaseConfig = {
     apiKey: "AIzaSyBgHSbR6Q_za_uSjxpNwfPGh2xx4QSYpEY",
     authDomain: "orcadofish.firebaseapp.com",
@@ -253,10 +215,15 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const tableBody = document.getElementById("tableBody");
 
-// FORM SUBMISSION
+// ---------------- PAGE NAVIGATION ----------------
+function showPage(pageId){
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    document.getElementById(pageId).style.display = 'block';
+}
+
+// ---------------- FORM SUBMISSION ----------------
 document.getElementById("boatForm").addEventListener("submit", function(e){
     e.preventDefault();
-
     const boatName = document.getElementById("boatName").value.trim();
     const location = document.getElementById("location").value.trim();
     const ownerName = document.getElementById("ownerName").value.trim();
@@ -283,7 +250,7 @@ document.getElementById("boatForm").addEventListener("submit", function(e){
     this.reset();
 });
 
-// LIVE TABLE
+// ---------------- LIVE TABLE ----------------
 database.ref("boats").on("value", function(snapshot){
     tableBody.innerHTML = "";
     snapshot.forEach(function(child){

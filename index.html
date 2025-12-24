@@ -13,10 +13,10 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
     overflow-x: hidden;
-    animation: wave 20s linear infinite;
+    padding-top: 50px;
 }
 
 @keyframes wave {
@@ -33,6 +33,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(0,123,255,0.2);
     animation: float 4s ease-in-out infinite;
+    margin-bottom: 50px;
 }
 
 @keyframes float {
@@ -113,6 +114,33 @@ button:hover {
     font-weight: bold;
 }
 
+/* ---------------- TABLE ---------------- */
+#boatTable {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#boatTable th, #boatTable td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#boatTable th {
+    background-color: #007BFF;
+    color: white;
+}
+
+#boatTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 /* ---------------- RESPONSIVE ---------------- */
 @media (max-width: 600px) {
     .container {
@@ -121,6 +149,9 @@ button:hover {
     input, select, button {
         font-size: 13px;
         padding: 10px;
+    }
+    #boatTable {
+        font-size: 12px;
     }
 }
 </style>
@@ -174,9 +205,32 @@ button:hover {
     </form>
 </div>
 
+<!-- Live Table -->
+<table id="boatTable">
+    <thead>
+        <tr>
+            <th>Boat Name</th>
+            <th>Location</th>
+            <th>Owner Name</th>
+            <th>Reg. No</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Subscription Active</th>
+            <th>Finish Date</th>
+            <th>Wireless No</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        <!-- Data populated dynamically -->
+    </tbody>
+</table>
+
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<!-- Confetti JS -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
 <script>
 const firebaseConfig = {
@@ -192,7 +246,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
+const tableBody = document.getElementById("tableBody");
 
+// ------------------- FORM SUBMIT -------------------
 document.getElementById("boatForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -206,30 +262,48 @@ document.getElementById("boatForm").addEventListener("submit", function(e) {
     const finishDate = document.getElementById("finishDate").value;
     const wirelessNo = document.getElementById("wirelessNo").value.trim();
 
-    // Check required fields
     if (!boatName || !location || !ownerName || !registrationNumber || !mobile || !email || !subscriptionActive || !finishDate || !wirelessNo) {
         document.getElementById("status").style.color = "red";
         document.getElementById("status").innerHTML = "❌ Please fill ALL fields before submitting";
         return;
     }
 
-    // Save to Firebase
-    database.ref("boats").push({
-        boatName,
-        location,
-        ownerName,
-        registrationNumber,
-        mobile,
-        email,
-        subscriptionActive,
-        finishDate,
-        wirelessNo
-    });
+    const newBoat = {
+        boatName, location, ownerName, registrationNumber,
+        mobile, email, subscriptionActive, finishDate, wirelessNo
+    };
+
+    database.ref("boats").push(newBoat);
 
     document.getElementById("status").style.color = "green";
     document.getElementById("status").innerHTML = "✅ Data Saved Successfully!";
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 
     this.reset();
+});
+
+// ------------------- LIVE TABLE -------------------
+database.ref("boats").on("value", function(snapshot) {
+    tableBody.innerHTML = ""; // clear table
+    snapshot.forEach(function(childSnapshot) {
+        const data = childSnapshot.val();
+        const row = `<tr>
+            <td>${data.boatName}</td>
+            <td>${data.location}</td>
+            <td>${data.ownerName}</td>
+            <td>${data.registrationNumber}</td>
+            <td>${data.mobile}</td>
+            <td>${data.email}</td>
+            <td>${data.subscriptionActive}</td>
+            <td>${data.finishDate}</td>
+            <td>${data.wirelessNo}</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+    });
 });
 </script>
 

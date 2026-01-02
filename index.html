@@ -1,251 +1,342 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orcado Fish</title>
+  <title>Orcado Fish</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #b3e5fc, #81d4fa);
-}
+  <style>
+    /* ===== Animations ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-/* NAVBAR */
-nav {
-    display: flex;
-    justify-content: center;
-    background: #007BFF;
-    padding: 15px;
-}
-nav a {
-    margin: 0 20px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-/* HERO */
-header {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #00cfff, #007bff);
-    color: white;
-}
-header .logo { width: 130px; }
+    /* ===== General Styles ===== */
+    body {
+      margin: 0;
+      font-family: Poppins, Arial, sans-serif;
+      background: #f5faff;
+      color: #1f2937;
+      animation: fadeIn 0.8s ease-in;
+    }
 
-/* FORM */
-.container {
-    background: white;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    border-radius: 15px;
-}
-label { font-weight: bold; margin-top: 12px; display: block; }
-input, select, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-}
-button {
-    background: #007BFF;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    margin-top: 20px;
-    cursor: pointer;
-}
+    /* ===== Top Navigation ===== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 20px;
+      background: #e6f2ff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      animation: fadeUp 0.6s ease-out;
+    }
 
-/* TABLE */
-#boatTable {
-    width: 95%;
-    max-width: 1100px;
-    margin: 30px auto;
-    border-collapse: collapse;
-    background: white;
-}
-#boatTable th, #boatTable td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: center;
-}
-#boatTable th {
-    background: #007BFF;
-    color: white;
-}
-#boatTable tr:nth-child(even) { background: #f2f2f2; }
-</style>
+    nav a {
+      color: #1d4ed8;
+      text-decoration: none;
+      margin-left: 12px;
+      font-weight: 500;
+      font-size: 14px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .logo {
+      width: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      padding: 90px 20px;
+      background: linear-gradient(180deg, #eaf4ff, #ffffff);
+      max-width: 1000px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      animation: fadeUp 0.8s ease-out;
+    }
+
+    .hero-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1e3a8a;
+      animation: fadeUp 1s ease-out;
+    }
+
+    .hero p {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 0;
+      color: #475569;
+      animation: fadeUp 1.2s ease-out;
+    }
+
+    /* ===== Sections ===== */
+    .section {
+      padding: 60px 20px;
+      background: #ffffff;
+      margin: 16px auto;
+      border-radius: 14px;
+      max-width: 1000px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      animation: fadeUp 0.9s ease-out;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #1e40af;
+    }
+
+    .card {
+      background: #f0f7ff;
+      padding: 18px;
+      border-radius: 12px;
+      margin: 10px 0;
+      color: #334155;
+      border-left: 5px solid #60a5fa;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .card b {
+      color: #1e3a8a;
+    }
+
+    /* ===== Contact Form ===== */
+    .contact-box {
+      background: #f8fbff;
+      padding: 25px;
+      border-radius: 14px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-sizing: border-box;
+      animation: fadeUp 1s ease-out;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-top: 8px;
+      font-family: Poppins;
+      box-sizing: border-box;
+      font-size: 15px;
+      background: #ffffff;
+      color: #1f2937;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-family: Poppins;
+      font-size: 15px;
+      background: #3b82f6;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(59,130,246,0.35);
+    }
+
+    #contactStatus {
+      margin-top: 8px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #64748b;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero, .section {
+        padding: 40px 20px;
+      }
+
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAV -->
-<nav>
-    <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('addBoat')">Add Boat</a>
-    <a onclick="showPage('viewBoats')">View Boats</a>
-</nav>
-
-<!-- HOME -->
-<div id="home" class="page">
-    <header>
-        <img src="logo.png" class="logo">
-        <h1>Orcado Fish</h1>
-        <p>Manage Your Boats Effortlessly</p>
-    </header>
-</div>
-
-<!-- ADD BOAT -->
-<div id="addBoat" class="page" style="display:none;">
-    <div class="container">
-        <form id="boatForm">
-            <label>Boat Name</label>
-            <input id="boatName" required>
-
-            <label>Location</label>
-            <input id="location" required>
-
-            <label>Boat Owner Name</label>
-            <input id="ownerName" required>
-
-            <label>Boat Registration Number</label>
-            <input id="registrationNumber" required>
-
-            <label>Mobile No</label>
-            <input id="mobile" required>
-
-            <label>Email ID</label>
-            <input id="email" type="email" required>
-
-            <label>Subscription Active</label>
-            <select id="subscriptionActive" required>
-                <option value="">Select</option>
-                <option>Yes</option>
-                <option>No</option>
-            </select>
-
-            <label>Subscription Finish Date</label>
-            <input id="finishDate" type="date" required>
-
-            <label>Wireless No</label>
-            <input id="wirelessNo" required>
-
-            <button type="submit">Submit</button>
-            <p id="status"></p>
-        </form>
-    </div>
-</div>
-
-<!-- VIEW BOATS -->
-<div id="viewBoats" class="page" style="display:none;">
-
-    <div style="text-align:center;margin-top:20px;">
-        <input id="search" placeholder="Search any field..." style="width:90%;max-width:400px;padding:10px;">
+  <!-- ===== Navigation ===== -->
+  <nav>
+    <div>
+      <img src="logo.png" class="logo" alt="Orcado Fish Logo">
     </div>
 
-    <div style="text-align:center;margin:15px;">
-        <button onclick="exportToExcel()">Export to Excel</button>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="add-boat.html">Add Boat</a>
+      <a href="view-boats.html">View Boats</a>
+    </div>
+  </nav>
+
+  <!-- ===== Hero Section ===== -->
+  <div class="hero">
+    <h1 class="hero-title">Orcado Fish</h1>
+    <p>Navigating the deep using real-time satellite data & N8FISH insights.</p>
+  </div>
+
+  <!-- ===== How We Work Section ===== -->
+  <div class="section">
+    <h2>How We Work</h2>
+
+    <div class="card">
+      <b>Smart Scouting</b><br>
+      We target PFZ using thermal + chlorophyll maps to reduce fuel waste.
     </div>
 
-    <table id="boatTable">
-        <thead>
-            <tr>
-                <th>Boat Name</th>
-                <th>Location</th>
-                <th>Boat Owner Name</th>
-                <th>Boat Registration Number</th>
-                <th>Mobile No</th>
-                <th>Email ID</th>
-                <th>Subscription Active</th>
-                <th>Subscription Finish Date</th>
-                <th>Wireless No</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-    </table>
-</div>
+    <div class="card">
+      <b>Real-Time Oceanics</b><br>
+      SST & wind current monitoring ensures safer operations.
+    </div>
 
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <div class="card">
+      <b>Sustainable Tech</b><br>
+      We minimize blind fishing using N8FISH data analytics.
+    </div>
+  </div>
 
-<script>
-const firebaseConfig = {
-    apiKey: "AIzaSyBgHSbR6Q_za_uSjxpNwfPGh2xx4QSYpEY",
-    authDomain: "orcadofish.firebaseapp.com",
-    databaseURL: "https://orcadofish-default-rtdb.firebaseio.com",
-    projectId: "orcadofish"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+  <!-- ===== The Catch Section ===== -->
+  <div class="section">
+    <h2>The Catch</h2>
 
-function showPage(id){
-    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
-}
+    <div class="card">
+      <b>Traceable Origins</b><br>
+      Every fish logged from GPS catch zone to dock.
+    </div>
 
-boatForm.addEventListener("submit", e => {
-    e.preventDefault();
-    db.ref("boats").push({
-        boatName: boatName.value,
-        location: location.value,
-        ownerName: ownerName.value,
-        registrationNumber: registrationNumber.value,
-        mobile: mobile.value,
-        email: email.value,
-        subscriptionActive: subscriptionActive.value,
-        finishDate: finishDate.value,
-        wirelessNo: wirelessNo.value
+    <div class="card">
+      <b>Wild & Fresh</b><br>
+      Sourced from nutrient-rich thermal fronts.
+    </div>
+  </div>
+
+  <!-- ===== Contact Section ===== -->
+  <div class="section">
+    <h2>Contact Us</h2>
+
+    <div class="contact-box">
+      <form id="contactForm">
+        <label>Name</label>
+        <input type="text" id="cName" required>
+
+        <label>Email</label>
+        <input type="email" id="cEmail" required>
+
+        <label>Message</label>
+        <textarea id="cMessage" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <p id="contactStatus"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer>© Orcado Fish</footer>
+
+  <!-- ===== Firebase (UNCHANGED) ===== -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="firebase-config.js"></script>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const msg = {
+        name: cName.value.trim(),
+        email: cEmail.value.trim(),
+        message: cMessage.value.trim(),
+        time: Date.now()
+      };
+
+      if(!msg.name || !msg.email || !msg.message){
+        contactStatus.style.color = "red";
+        contactStatus.innerHTML = "Please fill all fields";
+        return;
+      }
+
+      database.ref("contacts").push(msg);
+
+      contactStatus.style.color = "green";
+      contactStatus.innerHTML = "Message sent successfully ✔️";
+
+      this.reset();
     });
-    status.innerHTML = "✅ Data Saved";
-    e.target.reset();
-});
-
-db.ref("boats").on("value", snap => {
-    tableBody.innerHTML = "";
-    snap.forEach(c => {
-        const d = c.val();
-        tableBody.innerHTML += `
-        <tr>
-            <td>${d.boatName}</td>
-            <td>${d.location}</td>
-            <td>${d.ownerName}</td>
-            <td>${d.registrationNumber}</td>
-            <td>${d.mobile}</td>
-            <td>${d.email}</td>
-            <td>${d.subscriptionActive}</td>
-            <td>${d.finishDate}</td>
-            <td>${d.wirelessNo}</td>
-        </tr>`;
-    });
-});
-
-search.addEventListener("keyup", () => {
-    const v = search.value.toLowerCase();
-    document.querySelectorAll("#boatTable tbody tr").forEach(r => {
-        r.style.display = r.innerText.toLowerCase().includes(v) ? "" : "none";
-    });
-});
-
-function exportToExcel(){
-    let csv = [];
-    for (let row of boatTable.rows) {
-        let cols = [];
-        for (let cell of row.cells) cols.push(`"${cell.innerText}"`);
-        csv.push(cols.join(","));
-    }
-    const blob = new Blob([csv.join("\n")], {type:"text/csv"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "boats_data.csv";
-    a.click();
-}
-</script>
+  </script>
 
 </body>
 </html>

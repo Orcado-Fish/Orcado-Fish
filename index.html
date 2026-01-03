@@ -21,7 +21,7 @@ body{
   background:url("Background1.jpg") center/cover fixed no-repeat;
 }
 
-/* Overlay for readability */
+/* ===== DARK OVERLAY FOR READABILITY ===== */
 body::before{
   content:"";
   position:fixed;
@@ -38,22 +38,42 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:10px 22px;
+  padding:12px 28px;
   background:rgba(255,255,255,.35);
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,.45);
 }
 
-nav a{
+/* LEFT — BRAND SECTION */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+}
+
+.brand-name{
+  font-size:20px;
+  font-weight:700;
+  color:#0b2f78;
+  letter-spacing:.4px;
+}
+
+/* RIGHT — NAV LINKS */
+nav .links a{
   text-decoration:none;
-  margin-left:14px;
+  margin-left:20px;
   font-weight:500;
   color:#0b1c2d;
 }
 
-.logo{
-  width:40px;
-  border-radius:8px;
+nav .links a:hover{
+  text-decoration:underline;
 }
 
 /* ===== PAGE WRAPPER ===== */
@@ -139,6 +159,16 @@ footer{
 
 /* Responsive */
 @media(max-width:720px){
+
+  nav{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .links a{
+    margin-left:12px;
+  }
+
   .container{margin:38px auto;}
   .section{padding:22px;}
 }
@@ -150,14 +180,22 @@ footer{
 
 <!-- ===== NAVBAR ===== -->
 <nav>
-  <img src="logo.png" class="logo">
 
-  <div>
+  <!-- LEFT — LOGO + BRAND -->
+  <div class="brand">
+    <img src="logo.png" class="logo">
+    <span class="brand-name">Orcado Fish</span>
+  </div>
+
+  <!-- RIGHT — NAV LINKS -->
+  <div class="links">
     <a href="index.html">Home</a>
     <a href="add-boat.html">Add Boat</a>
     <a href="view-boats.html">View Boats</a>
   </div>
+
 </nav>
+
 
 <div class="container">
 
@@ -232,7 +270,7 @@ footer{
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
-<!-- your firebase credentials file -->
+<!-- Firebase Config -->
 <script src="firebase-config.js"></script>
 
 <script>
@@ -263,4 +301,3 @@ document.getElementById("contactForm").addEventListener("submit", function(e){
 
 </body>
 </html>
-

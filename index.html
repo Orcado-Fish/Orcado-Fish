@@ -12,6 +12,10 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: #020d18;
@@ -37,6 +41,12 @@ nav {
   position: absolute;
   width: 100%;
   top: 0;
+  animation: slideDown 1s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .nav-left a {
@@ -45,9 +55,28 @@ nav {
   color: #dfefff;
   font-size: 14px;
   letter-spacing: .08em;
+  position: relative;
+  transition: color .3s;
 }
 
-.nav-left a:hover { opacity: .7; }
+.nav-left a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #2ecc71;
+  transition: width .3s;
+}
+
+.nav-left a:hover {
+  color: #2ecc71;
+}
+
+.nav-left a:hover::after {
+  width: 100%;
+}
 
 .nav-center {
   display: flex;
@@ -57,16 +86,16 @@ nav {
 
 .nav-center img {
   width: 46px;
+  transition: transform .4s;
+}
+
+.nav-center img:hover {
+  transform: rotate(-8deg) scale(1.05);
 }
 
 .nav-center span {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
-}
-
-.nav-right {
-  display: flex;
-  justify-content: flex-end;
 }
 
 /* ===== HERO TEXT ===== */
@@ -81,12 +110,19 @@ nav {
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 52px;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .hero-content h1 span {
   display: block;
   font-size: 38px;
   margin-top: 12px;
+  opacity: 0.85;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===== SECTIONS ===== */
@@ -94,6 +130,12 @@ section {
   padding: 80px 20px;
   max-width: 1100px;
   margin: auto;
+  animation: sectionFade 1.2s ease forwards;
+}
+
+@keyframes sectionFade {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 section h2 {
@@ -103,6 +145,7 @@ section h2 {
   margin-bottom: 36px;
 }
 
+/* ===== CARD ===== */
 .card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,.12);
@@ -112,11 +155,24 @@ section h2 {
   display: flex;
   gap: 14px;
   align-items: center;
+  transition: transform .4s, box-shadow .4s, border-color .4s;
+  cursor: default;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(46,204,113,.6);
+  box-shadow: 0 18px 40px rgba(0,0,0,.4);
 }
 
 .card i {
   font-size: 26px;
   color: #2ecc71;
+  transition: transform .4s;
+}
+
+.card:hover i {
+  transform: scale(1.25) rotate(-6deg);
 }
 
 /* ===== FOOTER ===== */
@@ -124,7 +180,7 @@ footer {
   text-align: center;
   padding: 40px;
   background: #010912;
-  opacity: .7;
+  opacity: .75;
 }
 
 /* ===== MOBILE ===== */
@@ -138,13 +194,16 @@ footer {
   .hero-content h1 {
     font-size: 36px;
   }
+
+  .hero-content h1 span {
+    font-size: 26px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
 
   <nav>
@@ -173,7 +232,6 @@ footer {
 
 </div>
 
-<!-- HOW WE WORK -->
 <section>
   <h2>How We Work</h2>
 
@@ -193,19 +251,16 @@ footer {
   </div>
 </section>
 
-<!-- THE CATCH -->
 <section>
   <h2>The Catch</h2>
 
   <div class="card">
     <i class="fas fa-map-marked-alt"></i>
-    
     Know exactly where your fish came from — from GPS coordinates of the catch to the cold chain at the dock.
   </div>
 
   <div class="card">
     <i class="fas fa-water"></i>
-    
     Harvested from nutrient-rich thermal fronts where the ocean is most alive.
   </div>
 </section>
@@ -214,6 +269,3 @@ footer {
 
 </body>
 </html>
-
-
-

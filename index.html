@@ -119,38 +119,6 @@ section h2 {
   color: #2ecc71;
 }
 
-/* ===== CONTACT ===== */
-.contact-box {
-  max-width: 520px;
-  margin: auto;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,.07);
-  color: #fff;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  background: #2ecc71;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-#contactStatus {
-  margin-top: 10px;
-  text-align: center;
-}
-
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
@@ -176,6 +144,7 @@ footer {
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
 
   <nav>
@@ -204,55 +173,44 @@ footer {
 
 </div>
 
+<!-- HOW WE WORK -->
 <section>
   <h2>How We Work</h2>
-  <div class="card"><i class="fas fa-fish"></i> Smart PFZ scouting using satellite analytics</div>
-  <div class="card"><i class="fas fa-water"></i> Real-time SST & ocean current monitoring</div>
-  <div class="card"><i class="fas fa-leaf"></i> Sustainable fishing powered by N8FISH</div>
+
+  <div class="card">
+    <i class="fas fa-fish"></i>
+    Smart PFZ scouting using satellite analytics
+  </div>
+
+  <div class="card">
+    <i class="fas fa-water"></i>
+    Real-time SST & ocean current monitoring
+  </div>
+
+  <div class="card">
+    <i class="fas fa-leaf"></i>
+    Sustainable fishing powered by N8FISH
+  </div>
 </section>
 
+<!-- THE CATCH -->
 <section>
-  <h2>Contact Us</h2>
-  <div class="contact-box">
-    <form id="contactForm">
-      <input type="text" id="cName" placeholder="Name" required>
-      <input type="email" id="cEmail" placeholder="Email" required>
-      <textarea id="cMessage" rows="4" placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-      <p id="contactStatus"></p>
-    </form>
+  <h2>The Catch</h2>
+
+  <div class="card">
+    <i class="fas fa-map-marked-alt"></i>
+    <strong>Traceable Origins:</strong>
+    Know exactly where your fish came from — from GPS coordinates of the catch to the cold chain at the dock.
+  </div>
+
+  <div class="card">
+    <i class="fas fa-water"></i>
+    <strong>Wild & Fresh:</strong>
+    Harvested from nutrient-rich thermal fronts where the ocean is most alive.
   </div>
 </section>
 
 <footer>© Orcado Fish</footer>
-
-<!-- ===== FIREBASE ===== -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-<script src="firebase-config.js"></script>
-
-<script>
-const contactForm = document.getElementById("contactForm");
-const contactStatus = document.getElementById("contactStatus");
-
-contactForm.addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const msg = {
-    name: cName.value.trim(),
-    email: cEmail.value.trim(),
-    message: cMessage.value.trim(),
-    time: Date.now()
-  };
-
-  database.ref("contacts").push(msg);
-
-  contactStatus.style.color = "#2ecc71";
-  contactStatus.innerHTML = "Message sent ✔";
-
-  this.reset();
-});
-</script>
 
 </body>
 </html>

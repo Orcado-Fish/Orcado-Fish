@@ -5,13 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orcado Fish</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -20,7 +18,7 @@ body {
   color: #fff;
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 .hero {
   min-height: 100vh;
   background:
@@ -30,7 +28,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== NAVBAR ===== */
+/* ================= NAVBAR ================= */
 nav {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -39,12 +37,7 @@ nav {
   position: absolute;
   width: 100%;
   top: 0;
-  animation: slideDown 1s ease forwards;
-}
-
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  z-index: 10;
 }
 
 .nav-left {
@@ -57,27 +50,6 @@ nav {
   color: #dfefff;
   font-size: 14px;
   letter-spacing: .08em;
-  position: relative;
-  transition: color .3s;
-}
-
-.nav-left a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: #2ecc71;
-  transition: width .3s;
-}
-
-.nav-left a:hover {
-  color: #2ecc71;
-}
-
-.nav-left a:hover::after {
-  width: 100%;
 }
 
 .nav-center {
@@ -88,11 +60,6 @@ nav {
 
 .nav-center img {
   width: 46px;
-  transition: transform .4s;
-}
-
-.nav-center img:hover {
-  transform: rotate(-8deg) scale(1.05);
 }
 
 .nav-center span {
@@ -100,12 +67,9 @@ nav {
   font-size: 28px;
 }
 
-.nav-right {
-  display: flex;
-  justify-content: flex-end;
-}
+.nav-right {}
 
-/* ===== HERO TEXT ===== */
+/* ================= HERO CONTENT ================= */
 .hero-content {
   flex: 1;
   display: flex;
@@ -118,22 +82,16 @@ nav {
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 52px;
-  animation: fadeUp 1.2s ease forwards;
 }
 
 .hero-content h1 span {
   display: block;
   font-size: 38px;
   margin-top: 12px;
-  opacity: 0.85;
+  opacity: .85;
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== SECTIONS ===== */
+/* ================= SECTIONS ================= */
 section {
   padding: 80px 20px;
   max-width: 1100px;
@@ -147,7 +105,7 @@ section h2 {
   margin-bottom: 36px;
 }
 
-/* ===== CARD ===== */
+/* ================= CARD ================= */
 .card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,.12);
@@ -157,26 +115,14 @@ section h2 {
   display: flex;
   gap: 14px;
   align-items: center;
-  transition: transform .4s, box-shadow .4s, border-color .4s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(46,204,113,.6);
-  box-shadow: 0 18px 40px rgba(0,0,0,.4);
 }
 
 .card i {
   font-size: 26px;
   color: #2ecc71;
-  transition: transform .4s;
 }
 
-.card:hover i {
-  transform: scale(1.25) rotate(-6deg);
-}
-
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 40px;
@@ -184,41 +130,39 @@ footer {
   opacity: .75;
 }
 
-/* =========================
-   MOBILE FIXES (IMPORTANT)
-========================= */
-@media(max-width:768px){
+/* ==================================================
+   🔥 MOBILE PERFECT ALIGNMENT FIX
+================================================== */
+@media (max-width: 768px) {
 
-  .hero {
-    min-height: 100svh;
-  }
-
+  /* lock navbar height */
   nav {
-    position: relative;
+    position: fixed;
+    height: 72px;
+    padding: 12px 16px;
     grid-template-columns: 1fr;
-    padding: 16px 20px;
-    gap: 14px;
-    text-align: center;
+    gap: 6px;
+    background: rgba(2,13,24,.85);
+    backdrop-filter: blur(6px);
   }
 
   .nav-left {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .nav-left a {
-    margin: 0;
-    font-size: 13px;
+    display: none;
   }
 
   .nav-center {
     justify-content: center;
   }
 
+  /* offset hero to account for navbar */
+  .hero-content {
+    padding-top: 72px;
+    min-height: calc(100vh - 72px);
+  }
+
   .hero-content h1 {
     font-size: 32px;
-    line-height: 1.2;
+    line-height: 1.25;
   }
 
   .hero-content h1 span {
@@ -236,12 +180,6 @@ footer {
   .card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-  }
-
-  footer {
-    padding: 28px 16px;
-    font-size: 13px;
   }
 }
 </style>
@@ -249,7 +187,6 @@ footer {
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
 
   <nav>
@@ -278,39 +215,17 @@ footer {
 
 </div>
 
-<!-- HOW WE WORK -->
 <section>
   <h2>How We Work</h2>
-
-  <div class="card">
-    <i class="fas fa-fish"></i>
-    Smart PFZ scouting using satellite analytics
-  </div>
-
-  <div class="card">
-    <i class="fas fa-water"></i>
-    Real-time SST & ocean current monitoring
-  </div>
-
-  <div class="card">
-    <i class="fas fa-leaf"></i>
-    Sustainable fishing powered by N8FISH
-  </div>
+  <div class="card"><i class="fas fa-fish"></i> Smart PFZ scouting using satellite analytics</div>
+  <div class="card"><i class="fas fa-water"></i> Real-time SST & ocean current monitoring</div>
+  <div class="card"><i class="fas fa-leaf"></i> Sustainable fishing powered by N8FISH</div>
 </section>
 
-<!-- THE CATCH -->
 <section>
   <h2>The Catch</h2>
-
-  <div class="card">
-    <i class="fas fa-map-marked-alt"></i>
-    Know exactly where your fish came from — from GPS coordinates of the catch to the cold chain at the dock.
-  </div>
-
-  <div class="card">
-    <i class="fas fa-water"></i>
-    Harvested from nutrient-rich thermal fronts where the ocean is most alive.
-  </div>
+  <div class="card"><i class="fas fa-map-marked-alt"></i> Traceable origins from GPS coordinates to dock cold chain</div>
+  <div class="card"><i class="fas fa-water"></i> Harvested from nutrient-rich thermal fronts</div>
 </section>
 
 <footer>©2026 Orcado Fish</footer>

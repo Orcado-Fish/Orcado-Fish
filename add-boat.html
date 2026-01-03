@@ -9,64 +9,81 @@
     /* ===== General ===== */
     body {
       font-family: Poppins, Arial, sans-serif;
-      background: #f5faff;
-      color: #1f2937;
       margin: 0;
+      color: #1f2937;
+
+      /* 🔹 Background Image */
+      background: url("Background1.jpg") no-repeat center center fixed;
+      background-size: cover;
+
+      /* Overlay tint to improve readability */
+      position: relative;
+    }
+
+    /* Semi-transparent blue overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 18, 40, 0.55);
+      backdrop-filter: blur(4px);
+      z-index: -1;
     }
 
     /* ===== Navigation ===== */
     nav {
       padding: 15px 40px;
-      background: #e6f2ff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      background: rgba(230, 242, 255, 0.9);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
     }
 
     nav a {
-      color: #1d4ed8;
+      color: #0b3ea8;
       margin-right: 15px;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       transition: 0.3s;
     }
 
     nav a:hover {
-      color: #2563eb;
+      color: #1e5bff;
     }
 
     /* ===== Container ===== */
     .container {
       max-width: 520px;
       margin: 40px auto;
-      background: #ffffff;
-      padding: 25px;
+      
+      /* Glass card */
+      background: rgba(255, 255, 255, 0.88);
       border-radius: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      padding: 26px;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
     }
 
     h2 {
       text-align: center;
-      color: #1e40af;
-      margin-bottom: 20px;
+      color: #0b2f8a;
+      margin-bottom: 18px;
     }
 
     /* ===== Form ===== */
     label {
-      margin-top: 12px;
       display: block;
-      font-weight: 500;
-      color: #334155;
+      margin-top: 12px;
+      font-weight: 600;
+      color: #27374d;
     }
 
     input, select {
       width: 100%;
       padding: 10px;
+      margin-top: 6px;
       border-radius: 8px;
       border: 1px solid #cbd5e1;
-      margin-top: 6px;
-      font-family: Poppins;
       font-size: 14px;
       background: #ffffff;
-      color: #1f2937;
       box-sizing: border-box;
     }
 
@@ -77,26 +94,26 @@
 
     button {
       width: 100%;
-      padding: 12px;
       margin-top: 18px;
+      padding: 12px;
       border-radius: 8px;
-      background: #3b82f6;
-      color: #ffffff;
       border: none;
-      cursor: pointer;
+      background: #2563eb;
+      color: #ffffff;
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
+      cursor: pointer;
       transition: 0.3s;
     }
 
     button:hover {
-      background: #2563eb;
+      background: #1d4ed8;
     }
 
     #status {
       margin-top: 10px;
       text-align: center;
-      font-weight: 500;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -185,7 +202,7 @@
 
       database.ref("boats").push(b);
 
-      status.style.color = "green";
+      status.style.color = "lightseagreen";
       status.innerHTML = "Boat saved successfully ✔️";
       this.reset();
     });

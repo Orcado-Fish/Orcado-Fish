@@ -1,203 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Orcado Fish</title>
+<title>Orcado Fish</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* ===== General Styles ===== */
-    * {
-      box-sizing: border-box;
-    }
+<style>
+/* ===== Animations ===== */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
 
-    body {
-      margin: 0;
-      font-family: "Poppins", Arial, sans-serif;
-      background: radial-gradient(circle at top, #03375c, #021b2c 65%);
-      color: #ffffff;
-    }
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+/* ===== General Styles ===== */
+body {
+margin: 0;
+font-family: Poppins, Arial, sans-serif;
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+/* ===== BACKGROUND IMAGE ADDED ===== */
+background:
+  linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
+  url("bg.jpg");
 
-    /* ===== Header ===== */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      background: rgba(0,0,0,0.25);
-      backdrop-filter: blur(6px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+background-repeat: no-repeat;
 
-    .logo {
-      font-weight: 700;
-      font-size: 24px;
-      letter-spacing: 1px;
-    }
+color: #1f2937;
+animation: fadeIn 0.8s ease-in;
+}
 
-    nav ul {
-      display: flex;
-      gap: 26px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
+/* ===== Top Navigation ===== */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 6px 20px;
+background: rgba(230,242,255,0.85);
+backdrop-filter: blur(6px);
+position: sticky;
+top: 0;
+z-index: 100;
+box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+animation: fadeUp 0.6s ease-out;
+}
 
-    nav li {
-      font-weight: 500;
-      opacity: .9;
-      cursor: pointer;
-    }
+nav a {
+color: #1d4ed8;
+text-decoration: none;
+margin-left: 12px;
+font-weight: 500;
+font-size: 14px;
+position: relative;
+transition: color 0.3s;
+}
 
-    nav li:hover {
-      opacity: 1;
-    }
+nav a::after {
+content: "";
+position: absolute;
+left: 0;
+bottom: -4px;
+width: 0;
+height: 2px;
+background: #3b82f6;
+transition: width 0.3s ease;
+}
 
-    .btn-primary {
-      background: #00c2ff;
-      color: #021b2c;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-    }
+nav a:hover::after { width: 100%; }
 
-    /* ===== Hero Section ===== */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 32px;
-      padding: 70px 48px;
-      align-items: center;
-    }
+.logo {
+width: 40px;
+transition: transform 0.3s ease;
+}
 
-    .hero h1 {
-      font-size: 48px;
-      margin: 0 0 12px;
-    }
+.logo:hover { transform: scale(1.05); }
 
-    .hero p {
-      font-size: 16px;
-      line-height: 1.6;
-      opacity: .9;
-      margin-bottom: 20px;
-    }
+/* ===== Hero Section ===== */
+.hero {
+padding: 90px 20px;
 
-    .cta-row {
-      display: flex;
-      gap: 16px;
-    }
+/* translucent panel on top of bg image */
+background: rgba(255,255,255,0.85);
+backdrop-filter: blur(6px);
 
-    .btn-outline {
-      border: 1px solid #00c2ff;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-    }
+max-width: 1000px;
+margin: 0 auto;
+box-sizing: border-box;
+border-radius: 14px;
+animation: fadeUp 0.8s ease-out;
+}
 
-    /* ===== Card / Image Panel ===== */
-    .fish-card {
-      background: linear-gradient(145deg, #03375c, #021b2c);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 22px;
-      padding: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-    }
+.hero-title {
+text-align: center;
+font-size: 42px;
+font-weight: 700;
+margin-bottom: 20px;
+color: #1e3a8a;
+animation: fadeUp 1s ease-out;
+}
 
-    .fish-card img {
-      border-radius: 16px;
-    }
+.hero p {
+text-align: center;
+font-size: 18px;
+margin-top: 0;
+color: #475569;
+animation: fadeUp 1.2s ease-out;
+}
 
-    .fish-meta {
-      margin-top: 12px;
-      font-size: 14px;
-      opacity: .85;
-    }
+/* ===== Sections ===== */
+.section {
+padding: 60px 20px;
+background: rgba(255,255,255,0.92);
+backdrop-filter: blur(4px);
+margin: 16px auto;
+border-radius: 14px;
+max-width: 1000px;
+box-sizing: border-box;
+box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+animation: fadeUp 0.9s ease-out;
+}
 
-    /* ===== Footer ===== */
-    footer {
-      text-align: center;
-      padding: 30px;
-      opacity: .7;
-      font-size: 14px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      margin-top: 40px;
-    }
+.section h2 {
+margin-bottom: 20px;
+text-align: center;
+color: #1e40af;
+}
 
-    /* ===== Responsive ===== */
-    @media(max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 40px 20px;
-      }
+.card {
+background: #f0f7ff;
+padding: 18px;
+border-radius: 12px;
+margin: 10px 0;
+color: #334155;
+border-left: 5px solid #60a5fa;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-      header {
-        padding: 16px 20px;
-      }
+.card:hover {
+transform: translateY(-6px);
+box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
 
-      .hero h1 {
-        font-size: 36px;
-      }
-    }
-  </style>
+.card b { color: #1e3a8a; }
+
+/* ===== Contact Form ===== */
+.contact-box {
+background: #f8fbff;
+padding: 25px;
+border-radius: 14px;
+margin: 20px auto;
+max-width: 500px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+box-sizing: border-box;
+animation: fadeUp 1s ease-out;
+}
+
+input, textarea {
+width: 100%;
+padding: 12px;
+border-radius: 8px;
+border: 1px solid #cbd5e1;
+margin-top: 8px;
+font-family: Poppins;
+box-sizing: border-box;
+font-size: 15px;
+background: #ffffff;
+color: #1f2937;
+transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, textarea:focus {
+outline: none;
+border-color: #3b82f6;
+box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+button {
+width: 100%;
+padding: 12px;
+border-radius: 8px;
+margin-top: 12px;
+font-family: Poppins;
+font-size: 15px;
+background: #3b82f6;
+color: #ffffff;
+border: none;
+cursor: pointer;
+font-weight: 500;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 14px rgba(59,130,246,0.35);
+}
+
+#contactStatus {
+margin-top: 8px;
+font-weight: 500;
+text-align: center;
+}
+
+/* ===== Footer ===== */
+footer {
+text-align: center;
+padding: 25px;
+color: #e2e8f0;
+animation: fadeIn 1.2s ease-in;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+nav { flex-direction: column; align-items: flex-start; }
+.hero, .section { padding: 40px 20px; }
+.hero-title { font-size: 32px; }
+.hero p { font-size: 16px; }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">Orcado Fish</div>
+<!-- ===== Navigation ===== -->
+<nav>
+<div>
+<img src="logo.png" class="logo" alt="Orcado Fish Logo">
+</div>
 
-    <nav>
-      <ul>
-        <li>Home</li>
-        <li>Products</li>
-        <li>Aquarium Care</li>
-        <li>Contact</li>
-      </ul>
-    </nav>
+<div>
+<a href="index.html">Home</a>
+<a href="add-boat.html">Add Boat</a>
+<a href="view-boats.html">View Boats</a>
+</div>
+</nav>
 
-    <a class="btn-primary" href="#">Shop Now</a>
-  </header>
+<!-- ===== Hero Section ===== -->
+<div class="hero">
+<h1 class="hero-title">Orcado Fish</h1>
+<p>Navigating the deep using real-time satellite data & N8FISH insights.</p>
+</div>
 
-  <section class="hero">
-    <div>
-      <h1>Beautiful & Healthy Aquarium Fish</h1>
+<!-- ===== How We Work Section ===== -->
+<div class="section">
+<h2>How We Work</h2>
 
-      <p>
-        Explore a wide range of vibrant tropical and marine species,
-        carefully bred and maintained to ensure the best quality and
-        long-term health for your aquarium ecosystem.
-      </p>
+<div class="card">
+<b>Smart Scouting</b><br>
+We target PFZ using thermal + chlorophyll maps to reduce fuel waste.
+</div>
 
-      <div class="cta-row">
-        <a class="btn-primary" href="#">Browse Fish</a>
-        <a class="btn-outline" href="#">Learn More</a>
-      </div>
-    </div>
+<div class="card">
+<b>Real-Time Oceanics</b><br>
+SST & wind current monitoring ensures safer operations.
+</div>
 
-    <div class="fish-card">
-      <!-- Replace this with your actual image file -->
-      <img src="fish.jpg" alt="Aquarium fish">
-      <div class="fish-meta">Sample display — replace fish.jpg with your image</div>
-    </div>
-  </section>
+<div class="card">
+<b>Sustainable Tech</b><br>
+We minimize blind fishing using N8FISH data analytics.
+</div>
+</div>
 
-  <footer>
-    © 2026 Orcado Fish — All Rights Reserved
-  </footer>
+<!-- ===== The Catch Section ===== -->
+<div class="section">
+<h2>The Catch</h2>
+
+<div class="card">
+<b>Traceable Origins</b><br>
+Every fish logged from GPS catch zone to dock.
+</div>
+
+<div class="card">
+<b>Wild & Fresh</b><br>
+Sourced from nutrient-rich thermal fronts.
+</div>
+</div>
+
+<!-- ===== Contact Section ===== -->
+<div class="section">
+<h2>Contact Us</h2>
+
+<div class="contact-box">
+<form id="contactForm">
+<label>Name</label>
+<input type="text" id="cName" required>
+
+<label>Email</label>
+<input type="email" id="cEmail" required>
+
+<label>Message</label>
+<textarea id="cMessage" rows="4" required></textarea>
+
+<button type="submit">Send Message</button>
+<p id="contactStatus"></p>
+</form>
+</div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>© Orcado Fish</footer>
+
+<!-- ===== Firebase (UNCHANGED) ===== -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="firebase-config.js"></script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+const msg = {
+name: cName.value.trim(),
+email: cEmail.value.trim(),
+message: cMessage.value.trim(),
+time: Date.now()
+};
+
+if(!msg.name || !msg.email || !msg.message){
+contactStatus.style.color = "red";
+contactStatus.innerHTML = "Please fill all fields";
+return;
+}
+
+database.ref("contacts").push(msg);
+
+contactStatus.style.color = "green";
+contactStatus.innerHTML = "Message sent successfully ✔️";
+
+this.reset();
+});
+</script>
 
 </body>
 </html>

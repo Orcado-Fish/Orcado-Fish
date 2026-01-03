@@ -1,313 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Orcado Fish</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Animations ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* ===== General Styles ===== */
+    * {
+      box-sizing: border-box;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* ===== Background Image ===== */
     body {
       margin: 0;
-      font-family: Poppins, Arial, sans-serif;
-
-      background: url("Background1.jpg") no-repeat center center fixed;
-      background-size: cover;
-
-      color: #0f172a;
-      animation: fadeIn 0.8s ease-in;
+      font-family: "Poppins", Arial, sans-serif;
+      background: radial-gradient(circle at top, #03375c, #021b2c 65%);
+      color: #ffffff;
     }
 
-    /* ===== Top Navigation ===== */
-    nav {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== Header ===== */
+    header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 6px 20px;
-
-      background: rgba(230,242,255,0.6);
+      padding: 18px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.25);
       backdrop-filter: blur(6px);
-
       position: sticky;
       top: 0;
-      z-index: 100;
-
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      animation: fadeUp 0.6s ease-out;
-    }
-
-    nav a {
-      color: #1d4ed8;
-      text-decoration: none;
-      margin-left: 12px;
-      font-weight: 600;
-      font-size: 14px;
-      position: relative;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #2563eb;
+      z-index: 10;
     }
 
     .logo {
-      width: 40px;
-      transition: transform 0.3s ease;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: 1px;
     }
 
-    .logo:hover {
-      transform: scale(1.05);
+    nav ul {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
-    /* ===== Hero Section (Glass Effect) ===== */
-    .hero {
-      padding: 90px 20px;
-      max-width: 1000px;
-      margin: 25px auto;
-
-      background: rgba(255,255,255,0.35);
-      backdrop-filter: blur(10px);
-
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-      animation: fadeUp 0.8s ease-out;
-    }
-
-    .hero-title {
-      text-align: center;
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: #0f172a;
-    }
-
-    .hero p {
-      text-align: center;
-      font-size: 18px;
-      color: #020617;
-      opacity: 0.9;
-    }
-
-    /* ===== Sections (Glass Panels) ===== */
-    .section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: 16px auto;
-
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(8px);
-
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-      animation: fadeUp 0.9s ease-out;
-    }
-
-    .section h2 {
-      text-align: center;
-      margin-bottom: 18px;
-      color: #020617;
-    }
-
-    .card {
-      background: rgba(240,247,255,0.6);
-      backdrop-filter: blur(6px);
-
-      padding: 16px;
-      border-radius: 12px;
-      margin: 10px 0;
-
-      color: #020617;
+    nav li {
       font-weight: 500;
-
-      border-left: 5px solid #60a5fa;
-
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
-    }
-
-    /* ===== Contact Box ===== */
-    .contact-box {
-      background: rgba(255,255,255,0.45);
-      backdrop-filter: blur(10px);
-
-      padding: 25px;
-      border-radius: 14px;
-      max-width: 500px;
-      margin: 20px auto;
-
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #cbd5e1;
-      margin-top: 8px;
-      font-family: Poppins;
-      font-size: 15px;
-      background: rgba(255,255,255,0.9);
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 12px;
-      font-family: Poppins;
-      font-size: 15px;
-      background: #2563eb;
-      color: white;
-      border: none;
+      opacity: .9;
       cursor: pointer;
+    }
+
+    nav li:hover {
+      opacity: 1;
+    }
+
+    .btn-primary {
+      background: #00c2ff;
+      color: #021b2c;
+      padding: 10px 18px;
+      border-radius: 10px;
       font-weight: 600;
     }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(37,99,235,0.45);
+    /* ===== Hero Section ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      padding: 70px 48px;
+      align-items: center;
     }
 
+    .hero h1 {
+      font-size: 48px;
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      line-height: 1.6;
+      opacity: .9;
+      margin-bottom: 20px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn-outline {
+      border: 1px solid #00c2ff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    /* ===== Card / Image Panel ===== */
+    .fish-card {
+      background: linear-gradient(145deg, #03375c, #021b2c);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    }
+
+    .fish-card img {
+      border-radius: 16px;
+    }
+
+    .fish-meta {
+      margin-top: 12px;
+      font-size: 14px;
+      opacity: .85;
+    }
+
+    /* ===== Footer ===== */
     footer {
       text-align: center;
-      padding: 25px;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      padding: 30px;
+      opacity: .7;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin-top: 40px;
     }
 
     /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .hero-title { font-size: 32px; }
-      .hero p { font-size: 16px; }
+    @media(max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+      }
+
+      header {
+        padding: 16px 20px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- ===== Navigation ===== -->
-  <nav>
+  <header>
+    <div class="logo">Orcado Fish</div>
+
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>Products</li>
+        <li>Aquarium Care</li>
+        <li>Contact</li>
+      </ul>
+    </nav>
+
+    <a class="btn-primary" href="#">Shop Now</a>
+  </header>
+
+  <section class="hero">
     <div>
-      <img src="logo.png" class="logo" alt="Orcado Fish Logo">
+      <h1>Beautiful & Healthy Aquarium Fish</h1>
+
+      <p>
+        Explore a wide range of vibrant tropical and marine species,
+        carefully bred and maintained to ensure the best quality and
+        long-term health for your aquarium ecosystem.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn-primary" href="#">Browse Fish</a>
+        <a class="btn-outline" href="#">Learn More</a>
+      </div>
     </div>
 
-    <div>
-      <a href="index.html">Home</a>
-      <a href="add-boat.html">Add Boat</a>
-      <a href="view-boats.html">View Boats</a>
+    <div class="fish-card">
+      <!-- Replace this with your actual image file -->
+      <img src="fish.jpg" alt="Aquarium fish">
+      <div class="fish-meta">Sample display — replace fish.jpg with your image</div>
     </div>
-  </nav>
+  </section>
 
-  <!-- ===== Hero Section ===== -->
-  <div class="hero">
-    <h1 class="hero-title">Orcado Fish</h1>
-    <p>Navigating the deep using real-time satellite data & N8FISH insights.</p>
-  </div>
-
-  <!-- ===== How We Work ===== -->
-  <div class="section">
-    <h2>How We Work</h2>
-
-    <div class="card">
-      <b>Smart Scouting</b><br>
-      We target PFZ using thermal + chlorophyll maps to reduce fuel waste.
-    </div>
-
-    <div class="card">
-      <b>Real-Time Oceanics</b><br>
-      SST & wind current monitoring ensures safer operations.
-    </div>
-
-    <div class="card">
-      <b>Sustainable Tech</b><br>
-      We minimize blind fishing using N8FISH data analytics.
-    </div>
-  </div>
-
-  <!-- ===== The Catch ===== -->
-  <div class="section">
-    <h2>The Catch</h2>
-
-    <div class="card">
-      <b>Traceable Origins</b><br>
-      Every fish logged from GPS catch zone to dock.
-    </div>
-
-    <div class="card">
-      <b>Wild & Fresh</b><br>
-      Sourced from nutrient-rich thermal fronts.
-    </div>
-  </div>
-
-  <!-- ===== Contact Section ===== -->
-  <div class="section">
-    <h2>Contact Us</h2>
-
-    <div class="contact-box">
-      <form id="contactForm">
-        <label>Name</label>
-        <input type="text" id="cName" required>
-
-        <label>Email</label>
-        <input type="email" id="cEmail" required>
-
-        <label>Message</label>
-        <textarea id="cMessage" rows="4" required></textarea>
-
-        <button type="submit">Send Message</button>
-        <p id="contactStatus"></p>
-      </form>
-    </div>
-  </div>
-
-  <!-- ===== Footer ===== -->
-  <footer>© Orcado Fish</footer>
-
-  <!-- ===== Firebase Scripts ===== -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script src="firebase-config.js"></script>
-
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(e){
-      e.preventDefault();
-
-      const msg = {
-        name: cName.value.trim(),
-        email: cEmail.value.trim(),
-        message: cMessage.value.trim(),
-        time: Date.now()
-      };
-
-      if(!msg.name || !msg.email || !msg.message){
-        contactStatus.style.color = "red";
-        contactStatus.innerHTML = "Please fill all fields";
-        return;
-      }
-
-      database.ref("contacts").push(msg);
-
-      contactStatus.style.color = "lightgreen";
-      contactStatus.innerHTML = "Message sent successfully ✔️";
-
-      this.reset();
-    });
-  </script>
+  <footer>
+    © 2026 Orcado Fish — All Rights Reserved
+  </footer>
 
 </body>
 </html>

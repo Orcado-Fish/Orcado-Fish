@@ -7,7 +7,6 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <style>
@@ -43,8 +42,13 @@ nav {
   z-index: 10;
 }
 
+.nav-left {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
 .nav-left a {
-  margin-right: 22px;
   text-decoration: none;
   color: #dfefff;
   font-size: 14px;
@@ -53,22 +57,57 @@ nav {
 
 .nav-left a:hover { opacity: .7; }
 
+/* ===== DROPDOWN ===== */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-title {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: #010912;
+  border-radius: 10px;
+  min-width: 160px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  color: #dfefff;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.dropdown-menu a:hover {
+  background: rgba(255,255,255,.08);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* ===== CENTER LOGO ===== */
 .nav-center {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.nav-center img {
-  width: 46px;
-}
+.nav-center img { width: 46px; }
 
 .nav-center span {
   font-family: 'Playfair Display', serif;
   font-size: 28px;
-  letter-spacing: .5px;
 }
 
+/* ===== RIGHT BUTTONS ===== */
 .nav-right {
   display: flex;
   justify-content: flex-end;
@@ -83,11 +122,6 @@ nav {
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: .08em;
-}
-
-.nav-right a:last-child {
-  background: #27ae60;
 }
 
 /* ===== HERO TEXT ===== */
@@ -102,14 +136,11 @@ nav {
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 52px;
-  font-weight: 700;
-  letter-spacing: .04em;
 }
 
 .hero-content h1 span {
   display: block;
   font-size: 38px;
-  font-weight: 500;
   margin-top: 12px;
 }
 
@@ -170,8 +201,6 @@ button {
   cursor: pointer;
 }
 
-button:hover { opacity: .85; }
-
 #contactStatus {
   margin-top: 10px;
   text-align: center;
@@ -187,67 +216,82 @@ footer {
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  nav { grid-template-columns: 1fr; gap: 16px; text-align: center; }
-  .nav-right { justify-content: center; }
-  .hero-content h1 { font-size: 36px; }
+  nav {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .nav-left {
+    flex-direction: column;
+  }
+
+  .nav-right {
+    justify-content: center;
+  }
+
+  .dropdown-menu {
+    position: static;
+    margin-top: 8px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== HERO ===== -->
 <div class="hero">
 
-  <nav>
-    <div class="nav-left">
-      <a href="#">ABOUT</a>
-      <a href="#">JOB BOARD</a>
-      <a href="#">CONSULTANCY</a>
-      <a href="#">FAQS</a>
-      <a href="#">CONTACT</a>
+<nav>
+  <div class="nav-left">
+    <a href="#">ABOUT</a>
+
+    <div class="dropdown">
+      <a class="dropdown-title">JOB BOARD ▾</a>
+      <div class="dropdown-menu">
+        <a href="view-boat.html">View Boat</a>
+      </div>
     </div>
 
-    <div class="nav-center">
-      <img src="logo.png">
-      <span>Orcado Fish</span>
+    <div class="dropdown">
+      <a class="dropdown-title">CONSULTANCY ▾</a>
+      <div class="dropdown-menu">
+        <a href="add-boat.html">Add Boat</a>
+      </div>
     </div>
 
-    <div class="nav-right">
-      <a href="#">FIND A VESSEL</a>
-      <a href="#">FIND AN ENGINEER</a>
-    </div>
-  </nav>
-
-  <div class="hero-content">
-    <h1>
-      ORCADO FISH –
-      <span>Global Maritime Intelligence</span>
-    </h1>
+    <a href="#">FAQS</a>
+    <a href="contact.html">CONTACT</a>
   </div>
+
+  <div class="nav-center">
+    <img src="logo.png">
+    <span>Orcado Fish</span>
+  </div>
+
+  <div class="nav-right">
+    <a href="#">FIND A VESSEL</a>
+    <a href="#">FIND AN ENGINEER</a>
+  </div>
+</nav>
+
+<div class="hero-content">
+  <h1>ORCADO FISH – <span>Global Maritime Intelligence</span></h1>
+</div>
 </div>
 
-<!-- ===== HOW IT WORKS ===== -->
 <section>
   <h2>How We Work</h2>
 
-  <div class="card">
-    <i class="fas fa-fish"></i>
-    Smart PFZ scouting using satellite analytics
-  </div>
-
-  <div class="card">
-    <i class="fas fa-water"></i>
-    Real-time SST & ocean current monitoring
-  </div>
-
-  <div class="card">
-    <i class="fas fa-leaf"></i>
-    Sustainable fishing powered by N8FISH
-  </div>
+  <div class="card"><i class="fas fa-fish"></i> Smart PFZ scouting using satellite analytics</div>
+  <div class="card"><i class="fas fa-water"></i> Real-time SST & ocean current monitoring</div>
+  <div class="card"><i class="fas fa-leaf"></i> Sustainable fishing powered by N8FISH</div>
 </section>
 
-<!-- ===== CONTACT ===== -->
 <section>
   <h2>Contact Us</h2>
 
@@ -287,7 +331,6 @@ contactForm.addEventListener("submit", function(e){
 
   contactStatus.style.color = "#2ecc71";
   contactStatus.innerHTML = "Message sent ✔";
-
   this.reset();
 });
 </script>

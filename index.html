@@ -18,6 +18,7 @@ body {
   color: #fff;
 }
 
+/* ===== HERO ===== */
 .hero {
   height: 100vh;
   background:
@@ -54,7 +55,9 @@ nav {
   gap: 10px;
 }
 
-.nav-center img { width: 46px; }
+.nav-center img {
+  width: 46px;
+}
 
 .nav-center span {
   font-family: 'Playfair Display', serif;
@@ -64,17 +67,6 @@ nav {
 .nav-right {
   display: flex;
   justify-content: flex-end;
-  gap: 14px;
-}
-
-.nav-right a {
-  padding: 10px 20px;
-  border-radius: 999px;
-  background: #2ecc71;
-  color: #062b1a;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
 }
 
 /* ===== HERO TEXT ===== */
@@ -169,9 +161,15 @@ footer {
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
-  nav { grid-template-columns: 1fr; gap: 16px; text-align: center; }
-  .nav-right { justify-content: center; }
-  .hero-content h1 { font-size: 36px; }
+  nav {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
 }
 </style>
 </head>
@@ -179,29 +177,31 @@ footer {
 <body>
 
 <div class="hero">
+
   <nav>
     <div class="nav-left">
       <a href="#">ABOUT</a>
-      <a href="add-boat.html">Add Boat</a>
-      <a href="view-boats.html">View Boat</a>
+      <a href="add-boat.html">ADD BOAT</a>
+      <a href="view-boats.html">VIEW BOAT</a>
       <a href="#">FAQS</a>
       <a href="contact.html">CONTACT</a>
     </div>
 
     <div class="nav-center">
-      <img src="logo.png">
+      <img src="logo.png" alt="Orcado Fish Logo">
       <span>Orcado Fish</span>
     </div>
 
-    <div class="nav-right">
-      <a href="#">FIND A VESSEL</a>
-      <a href="#">FIND AN ENGINEER</a>
-    </div>
+    <div class="nav-right"></div>
   </nav>
 
   <div class="hero-content">
-    <h1>ORCADO FISH – <span>Global Maritime Intelligence</span></h1>
+    <h1>
+      ORCADO FISH –
+      <span>Global Maritime Intelligence</span>
+    </h1>
   </div>
+
 </div>
 
 <section>
@@ -249,6 +249,7 @@ contactForm.addEventListener("submit", function(e){
 
   contactStatus.style.color = "#2ecc71";
   contactStatus.innerHTML = "Message sent ✔";
+
   this.reset();
 });
 </script>

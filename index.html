@@ -1,215 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orcado Fish</title>
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome for icons -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <style>
-/* ===== GLOBAL ===== */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ===== RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== BODY ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  color: #e0f0ff;
-  background: url('Background1.jpg') center/cover fixed no-repeat;
-  position: relative;
+  background: #020d18;
+  color: #fff;
 }
 
-/* Dark overlay for readability */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(to bottom, rgba(0, 25, 50, 0.65), rgba(0, 50, 80, 0.95));
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(2,13,24,.55), rgba(2,13,24,.85)),
+    url("Background1.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===== NAVBAR ===== */
 nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 14px 28px;
-  background: rgba(0, 50, 80, 0.6);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,.25);
-  position: sticky;
+  padding: 22px 48px;
+  position: absolute;
+  width: 100%;
   top: 0;
-  z-index: 100;
+  z-index: 10;
 }
 
-.brand { display: flex; align-items: center; gap: 12px; }
-.logo { width: 48px; height: 48px; border-radius: 10px; }
-.brand-name { font-family: 'Merriweather', serif; font-size: 24px; color: #00cfff; letter-spacing: .5px; font-weight: 700; }
-
-nav .links a {
+.nav-left a {
+  margin-right: 22px;
   text-decoration: none;
-  margin-left: 20px;
-  font-weight: 500;
-  color: #e0f0ff;
-  transition: 0.3s;
+  color: #dfefff;
+  font-size: 14px;
+  letter-spacing: .08em;
 }
-nav .links a:hover { color: #00cfff; text-decoration: underline; }
 
-/* ===== CONTAINER ===== */
-.container { max-width: 1024px; margin: 80px auto; padding: 0 20px; }
+.nav-left a:hover { opacity: .7; }
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-center img {
+  width: 46px;
+}
+
+.nav-center span {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  letter-spacing: .5px;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.nav-right a {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: #2ecc71;
+  color: #062b1a;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.nav-right a:last-child {
+  background: #27ae60;
+}
+
+/* ===== HERO TEXT ===== */
+.hero-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.hero-content h1 span {
+  display: block;
+  font-size: 38px;
+  font-weight: 500;
+  margin-top: 12px;
+}
 
 /* ===== SECTIONS ===== */
-.section {
-  background: rgba(0, 50, 80, 0.7);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  padding: 36px;
+section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+section h2 {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
   margin-bottom: 36px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.3);
-  border: 1px solid rgba(255,255,255,0.15);
 }
 
-h1,h2 { text-align: center; font-family: 'Merriweather', serif; color: #00cfff; }
-h1 { font-size: 2.8rem; }
-h2 { font-size: 2.2rem; margin-bottom: 24px; }
-p { text-align: center; color: #cce6ff; }
-
-/* ===== FEATURE CARDS ===== */
 .card {
-  background: rgba(0, 100, 150, 0.8);
-  border: 1px solid rgba(0, 200, 255, 0.3);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 22px;
   border-radius: 16px;
-  padding: 18px 22px;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   display: flex;
-  align-items: center;
   gap: 14px;
-  transition: 0.3s;
+  align-items: center;
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.35); }
 
-.card i { font-size: 1.8rem; color: #00cfff; }
-.card b { color: #00f0ff; font-size: 1.1rem; }
+.card i {
+  font-size: 26px;
+  color: #2ecc71;
+}
 
-/* ===== CONTACT FORM ===== */
+/* ===== CONTACT ===== */
 .contact-box {
   max-width: 520px;
-  margin: 0 auto;
+  margin: auto;
 }
-label { font-weight: 500; color: #cce6ff; }
+
 input, textarea {
   width: 100%;
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #00cfff;
-  margin-top: 6px;
-  font-family: 'Poppins';
-  background: rgba(255,255,255,0.05);
-  color: #e0f0ff;
-}
-input:focus, textarea:focus { outline: none; border-color: #00ffff; background: rgba(255,255,255,0.1); }
-
-button {
-  margin-top: 12px;
-  width: 100%;
-  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 14px;
   border-radius: 10px;
   border: none;
+  background: rgba(255,255,255,.07);
+  color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  background: #2ecc71;
   font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(90deg, #1f59ff, #00cfff);
-  color: #fff;
-  transition: 0.3s;
 }
-button:hover { transform: scale(1.03); }
 
-#contactStatus { text-align: center; margin-top: 8px; font-weight: 600; }
+button:hover { opacity: .85; }
+
+#contactStatus {
+  margin-top: 10px;
+  text-align: center;
+}
 
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
-  color: #cce6ff;
-  padding: 40px 0;
-  background: rgba(0,25,50,0.8);
+  padding: 40px;
+  background: #010912;
+  opacity: .7;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== MOBILE ===== */
 @media(max-width:768px){
-  nav { flex-direction: column; gap: 12px; }
-  .links a { margin-left: 12px; }
-  .container { margin: 50px auto; }
-  .section { padding: 22px; }
-  h1 { font-size: 2.2rem; }
-  h2 { font-size: 1.8rem; }
+  nav { grid-template-columns: 1fr; gap: 16px; text-align: center; }
+  .nav-right { justify-content: center; }
+  .hero-content h1 { font-size: 36px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav>
-  <div class="brand">
-    <img src="logo.png" class="logo">
-    <span class="brand-name">Orcado Fish</span>
-  </div>
+<!-- ===== HERO ===== -->
+<div class="hero">
 
-  <div class="links">
-    <a href="index.html">Home</a>
-    <a href="add-boat.html">Add Boat</a>
-    <a href="view-boats.html">View Boats</a>
-  </div>
-</nav>
-
-<div class="container">
-
-  <!-- ===== HERO ===== -->
-  <div class="section">
-    <h1>Orcado Fish</h1>
-    <p>Navigating the deep using real-time satellite data & N8FISH insights.</p>
-  </div>
-
-  <!-- ===== HOW WE WORK ===== -->
-  <div class="section">
-    <h2>How We Work</h2>
-
-    <div class="card"><i class="fas fa-fish"></i><b>Smart Scouting</b> — We target PFZ using thermal + chlorophyll maps to reduce fuel waste.</div>
-    <div class="card"><i class="fas fa-water"></i><b>Real-Time Oceanics</b> — SST & wind current monitoring ensures safer operations.</div>
-    <div class="card"><i class="fas fa-biohazard"></i><b>Sustainable Tech</b> — We minimize blind fishing using N8FISH analytics.</div>
-  </div>
-
-  <!-- ===== THE CATCH ===== -->
-  <div class="section">
-    <h2>The Catch</h2>
-    <div class="card"><i class="fas fa-map-marker-alt"></i><b>Traceable Origins</b> — Every fish logged from GPS catch zone to dock.</div>
-    <div class="card"><i class="fas fa-leaf"></i><b>Wild & Fresh</b> — Sourced from nutrient-rich thermal fronts.</div>
-  </div>
-
-  <!-- ===== CONTACT ===== -->
-  <div class="section">
-    <h2>Contact Us</h2>
-    <div class="contact-box">
-      <form id="contactForm">
-        <label>Name</label>
-        <input type="text" id="cName" required>
-        <label>Email</label>
-        <input type="email" id="cEmail" required>
-        <label>Message</label>
-        <textarea id="cMessage" rows="4" required></textarea>
-        <button type="submit">Send Message</button>
-        <p id="contactStatus"></p>
-      </form>
+  <nav>
+    <div class="nav-left">
+      <a href="#">ABOUT</a>
+      <a href="#">JOB BOARD</a>
+      <a href="#">CONSULTANCY</a>
+      <a href="#">FAQS</a>
+      <a href="#">CONTACT</a>
     </div>
+
+    <div class="nav-center">
+      <img src="logo.png">
+      <span>Orcado Fish</span>
+    </div>
+
+    <div class="nav-right">
+      <a href="#">FIND A VESSEL</a>
+      <a href="#">FIND AN ENGINEER</a>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <h1>
+      ORCADO FISH –
+      <span>Global Maritime Intelligence</span>
+    </h1>
+  </div>
+</div>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section>
+  <h2>How We Work</h2>
+
+  <div class="card">
+    <i class="fas fa-fish"></i>
+    Smart PFZ scouting using satellite analytics
   </div>
 
-</div>
+  <div class="card">
+    <i class="fas fa-water"></i>
+    Real-time SST & ocean current monitoring
+  </div>
+
+  <div class="card">
+    <i class="fas fa-leaf"></i>
+    Sustainable fishing powered by N8FISH
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section>
+  <h2>Contact Us</h2>
+
+  <div class="contact-box">
+    <form id="contactForm">
+      <input type="text" id="cName" placeholder="Name" required>
+      <input type="email" id="cEmail" placeholder="Email" required>
+      <textarea id="cMessage" rows="4" placeholder="Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="contactStatus"></p>
+    </form>
+  </div>
+</section>
 
 <footer>© Orcado Fish</footer>
 
-<!-- ===== FIREBASE SCRIPTS ===== -->
+<!-- ===== FIREBASE ===== -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <script src="firebase-config.js"></script>
@@ -228,16 +283,10 @@ contactForm.addEventListener("submit", function(e){
     time: Date.now()
   };
 
-  if(!msg.name || !msg.email || !msg.message){
-    contactStatus.style.color = "red";
-    contactStatus.innerHTML = "Please fill all fields";
-    return;
-  }
-
   database.ref("contacts").push(msg);
 
-  contactStatus.style.color = "limegreen";
-  contactStatus.innerHTML = "Message sent successfully ✔️";
+  contactStatus.style.color = "#2ecc71";
+  contactStatus.innerHTML = "Message sent ✔";
 
   this.reset();
 });

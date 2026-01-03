@@ -39,6 +39,11 @@ nav {
   top: 0;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
 .nav-left a {
   margin-right: 22px;
   text-decoration: none;
@@ -53,6 +58,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: center;
 }
 
 .nav-center img { width: 46px; }
@@ -62,7 +68,7 @@ nav {
   font-size: 28px;
 }
 
-.nav-right { display: flex; justify-content: flex-end; }
+.nav-right {}
 
 /* ===== HERO TEXT ===== */
 .hero-content {
@@ -83,7 +89,7 @@ nav {
   color: #2ecc71;
 }
 
-/* ===== CONTACT DETAILS SECTION ===== */
+/* ===== CONTACT DETAILS ===== */
 .contact-details {
   background: #fff;
   color: #020d18;
@@ -148,25 +154,46 @@ footer {
   opacity: .7;
 }
 
-/* ===== MOBILE ===== */
+/* ================= MOBILE FIX (SAME AS INDEX) ================= */
 @media(max-width:900px){
+
+  nav {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 16px 20px;
+    text-align: center;
+    position: relative;
+  }
+
+  .nav-center {
+    order: 1;
+    justify-content: center;
+  }
+
+  .nav-left {
+    order: 2;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .nav-left a {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 40px;
     text-align: center;
   }
 
   .brand-box {
     justify-content: center;
-  }
-
-  nav {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    text-align: center;
-  }
-
-  .hero-content h1 {
-    font-size: 36px;
   }
 }
 </style>
@@ -174,9 +201,9 @@ footer {
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
 
+  <!-- NAVBAR -->
   <nav>
     <div class="nav-left">
       <a href="index.html">ABOUT</a>
@@ -194,6 +221,7 @@ footer {
     <div class="nav-right"></div>
   </nav>
 
+  <!-- HERO CONTENT -->
   <div class="hero-content">
     <div>
       <h1>CONTACT US</h1>
@@ -207,7 +235,6 @@ footer {
 <section class="contact-details">
   <div class="contact-grid">
 
-    <!-- BRAND -->
     <div class="brand-box">
       <div class="brand-logo">OFG</div>
       <div class="brand-text">
@@ -216,10 +243,8 @@ footer {
       </div>
     </div>
 
-    <!-- GET IN TOUCH -->
     <div class="contact-col">
       <h3>Get in Touch</h3>
-
       <p>
         <strong>Omkar Koli</strong><br>
         Founder and Owner<br>
@@ -227,10 +252,8 @@ footer {
         oomkar@orcado.fish<br>
         Location : Uran
       </p>
-
     </div>
 
-    <!-- QUICK LINKS (SAME AS NAVBAR) -->
     <div class="contact-col">
       <h3>Quick Links</h3>
       <a href="index.html">ABOUT</a>
@@ -240,7 +263,6 @@ footer {
       <a href="contact.html">CONTACT</a>
     </div>
 
-    <!-- SOCIALS -->
     <div class="contact-col">
       <h3>Socials</h3>
       <a href="#">Facebook</a>
@@ -252,11 +274,6 @@ footer {
 </section>
 
 <footer>©2026 Orcado Fish</footer>
-
-<!-- ===== FIREBASE (KEPT FOR SITE CONSISTENCY) ===== -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-<script src="firebase-config.js"></script>
 
 </body>
 </html>

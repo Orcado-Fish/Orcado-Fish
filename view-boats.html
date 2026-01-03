@@ -35,6 +35,7 @@ nav {
   position: absolute;
   width: 100%;
   top: 0;
+  z-index: 10;
 }
 
 .nav-left a {
@@ -161,12 +162,12 @@ tr:hover {
 }
 
 .active {
-  background: rgba(46, 204, 113, .2);
+  background: rgba(46,204,113,.2);
   color: #2ecc71;
 }
 
 .expired {
-  background: rgba(231, 76, 60, .2);
+  background: rgba(231,76,60,.2);
   color: #e74c3c;
 }
 
@@ -190,16 +191,46 @@ tr:hover {
   background: rgba(255,255,255,.2);
 }
 
-/* ===== MOBILE ===== */
-@media(max-width:768px){
+/* ================= MOBILE FIX (MATCHES INDEX & ADD BOAT) ================= */
+@media (max-width: 768px) {
+
   nav {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    text-align: center;
+    position: fixed;
+    background: rgba(2,13,24,.92);
+    backdrop-filter: blur(6px);
+    padding: 10px 16px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-center {
+    justify-content: center;
+  }
+
+  .nav-left {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .nav-left a {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  section {
+    padding-top: 190px; /* prevents overlap with fixed navbar */
   }
 
   .controls input {
     width: 100%;
+  }
+
+  section h2 {
+    font-size: 28px;
   }
 }
 </style>

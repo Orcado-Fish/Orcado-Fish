@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us – Orcado Fish</title>
+<title>Contact – Orcado Fish</title>
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  height: 50vh;
+  height: 60vh;
   background:
     linear-gradient(rgba(2,13,24,.55), rgba(2,13,24,.85)),
     url("Background1.jpg") center/cover no-repeat;
@@ -79,72 +79,65 @@ nav {
 }
 
 .hero-content p {
-  color: #2ecc71;
   margin-top: 10px;
+  color: #2ecc71;
 }
 
-/* ===== CONTACT SECTION ===== */
-.contact-section {
+/* ===== CONTACT DETAILS SECTION ===== */
+.contact-details {
+  background: #fff;
+  color: #020d18;
+  padding: 90px 40px;
+}
+
+.contact-grid {
   max-width: 1200px;
   margin: auto;
-  padding: 80px 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 2fr 2.5fr 1.5fr 1fr;
+  gap: 70px;
 }
 
-/* LEFT INFO */
-.contact-info .info-box {
+/* BRAND */
+.brand-box {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-.contact-info i {
-  font-size: 22px;
-  color: #2ecc71;
-}
-
-.contact-info h4 {
-  font-weight: 500;
-}
-
-.contact-info p {
-  font-size: 14px;
-  opacity: .85;
-}
-
-/* FORM */
-.contact-form h2 {
+.brand-logo {
   font-family: 'Playfair Display', serif;
+  font-size: 64px;
+}
+
+.brand-text {
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+/* COLUMNS */
+.contact-col h3 {
+  color: #2ecc71;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.contact-col p {
+  font-size: 14px;
+  line-height: 1.7;
   margin-bottom: 20px;
 }
 
-input, textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 16px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,.07);
-  color: #fff;
+.contact-col a {
+  display: block;
+  text-decoration: none;
+  color: #020d18;
+  font-size: 14px;
+  margin-bottom: 12px;
 }
 
-button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: none;
-  background: #2ecc71;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-#contactStatus {
-  margin-top: 10px;
-  text-align: center;
+.contact-col a:hover {
+  color: #2ecc71;
 }
 
 /* ===== FOOTER ===== */
@@ -157,8 +150,13 @@ footer {
 
 /* ===== MOBILE ===== */
 @media(max-width:900px){
-  .contact-section {
+  .contact-grid {
     grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .brand-box {
+    justify-content: center;
   }
 
   nav {
@@ -178,6 +176,7 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
+
   <nav>
     <div class="nav-left">
       <a href="#">ABOUT</a>
@@ -198,95 +197,65 @@ footer {
   <div class="hero-content">
     <div>
       <h1>CONTACT US</h1>
-      <p>Get In Touch</p>
+      <p>Get in Touch</p>
     </div>
   </div>
+
 </div>
 
-<!-- CONTACT BODY -->
-<section class="contact-section">
+<!-- CONTACT DETAILS -->
+<section class="contact-details">
+  <div class="contact-grid">
 
-  <!-- LEFT DETAILS -->
-  <div class="contact-info">
-    <div class="info-box">
-      <i class="fas fa-map-marker-alt"></i>
-      <div>
-        <h4>Location</h4>
-        <p>Australia, Head Office</p>
+    <!-- BRAND -->
+    <div class="brand-box">
+      <div class="brand-logo">IMG</div>
+      <div class="brand-text">
+        Orcado Fish<br>
+        Group
       </div>
     </div>
 
-    <div class="info-box">
-      <i class="fas fa-envelope"></i>
-      <div>
-        <h4>Email</h4>
-        <p>pete@hillmaritime.com</p>
-      </div>
+    <!-- GET IN TOUCH -->
+    <div class="contact-col">
+      <h3>Get in Touch</h3>
+
+      <p>
+        <strong>Omkar Koli</strong><br>
+        Founder and Owner<br>
+        7039793355<br>
+        oomkar@orcado.fish
+      </p>
+
     </div>
 
-    <div class="info-box">
-      <i class="fab fa-whatsapp"></i>
-      <div>
-        <h4>WhatsApp</h4>
-        <p>+61 484 076 243</p>
-      </div>
+    <!-- QUICK LINKS (SAME AS NAVBAR) -->
+    <div class="contact-col">
+      <h3>Quick Links</h3>
+      <a href="#">ABOUT</a>
+      <a href="add-boat.html">ADD BOAT</a>
+      <a href="view-boats.html">VIEW BOAT</a>
+      <a href="#">FAQS</a>
+      <a href="contact.html">CONTACT</a>
     </div>
 
-    <div class="info-box">
-      <i class="fas fa-globe"></i>
-      <div>
-        <h4>Location</h4>
-        <p>International</p>
-      </div>
+    <!-- SOCIALS -->
+    <div class="contact-col">
+      <h3>Socials</h3>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
     </div>
+
   </div>
-
-  <!-- FORM -->
-  <div class="contact-form">
-    <h2>General Enquiry</h2>
-
-    <form id="contactForm">
-      <input type="text" id="cName" placeholder="Name *" required>
-      <input type="email" id="cEmail" placeholder="Email *" required>
-      <input type="text" id="cPhone" placeholder="Phone *" required>
-      <textarea id="cMessage" rows="4" placeholder="Message *" required></textarea>
-      <button type="submit">Send Message</button>
-      <p id="contactStatus"></p>
-    </form>
-  </div>
-
 </section>
 
 <footer>© Orcado Fish</footer>
 
-<!-- FIREBASE -->
+<!-- ===== FIREBASE (KEPT FOR SITE CONSISTENCY) ===== -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 <script src="firebase-config.js"></script>
-
-<script>
-const contactForm = document.getElementById("contactForm");
-const contactStatus = document.getElementById("contactStatus");
-
-contactForm.addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const msg = {
-    name: cName.value.trim(),
-    email: cEmail.value.trim(),
-    phone: cPhone.value.trim(),
-    message: cMessage.value.trim(),
-    time: Date.now()
-  };
-
-  database.ref("contacts").push(msg);
-
-  contactStatus.style.color = "#2ecc71";
-  contactStatus.innerHTML = "Message sent ✔";
-
-  this.reset();
-});
-</script>
 
 </body>
 </html>

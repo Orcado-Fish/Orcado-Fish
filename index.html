@@ -1,341 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Orcado Fish</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* ===== Animations ===== */
-@keyframes fadeUp {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  color:#0b1c2d;
+
+  /* Background Image */
+  background:url("bg.jpg") center/cover fixed no-repeat;
 }
 
-@keyframes fadeIn {
-from { opacity: 0; }
-to { opacity: 1; }
+/* Overlay for readability */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.75)
+  );
 }
 
-/* ===== General Styles ===== */
-body {
-margin: 0;
-font-family: Poppins, Arial, sans-serif;
-
-/* ===== BACKGROUND IMAGE ADDED ===== */
-background:
-  linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
-  url("Background1.jpg");
-
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
-background-repeat: no-repeat;
-
-color: #1f2937;
-animation: fadeIn 0.8s ease-in;
+/* ===== NAVBAR ===== */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 22px;
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.45);
 }
 
-/* ===== Top Navigation ===== */
-nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 6px 20px;
-background: rgba(230,242,255,0.85);
-backdrop-filter: blur(6px);
-position: sticky;
-top: 0;
-z-index: 100;
-box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-animation: fadeUp 0.6s ease-out;
+nav a{
+  text-decoration:none;
+  margin-left:14px;
+  font-weight:500;
+  color:#0b1c2d;
 }
 
-nav a {
-color: #1d4ed8;
-text-decoration: none;
-margin-left: 12px;
-font-weight: 500;
-font-size: 14px;
-position: relative;
-transition: color 0.3s;
+.logo{
+  width:40px;
+  border-radius:8px;
 }
 
-nav a::after {
-content: "";
-position: absolute;
-left: 0;
-bottom: -4px;
-width: 0;
-height: 2px;
-background: #3b82f6;
-transition: width 0.3s ease;
+/* ===== PAGE WRAPPER ===== */
+.container{
+  max-width:980px;
+  margin:70px auto;
+  padding:0 20px;
 }
 
-nav a:hover::after { width: 100%; }
-
-.logo {
-width: 40px;
-transition: transform 0.3s ease;
+/* ===== GLASS CARDS ===== */
+.section{
+  background:rgba(255,255,255,.78);
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:22px;
+  backdrop-filter:blur(16px);
+  padding:34px;
+  margin-bottom:28px;
+  box-shadow:0 18px 42px rgba(0,0,0,.35);
 }
 
-.logo:hover { transform: scale(1.05); }
-
-/* ===== Hero Section ===== */
-.hero {
-padding: 90px 20px;
-
-/* translucent panel on top of bg image */
-background: rgba(255,255,255,0.85);
-backdrop-filter: blur(6px);
-
-max-width: 1000px;
-margin: 0 auto;
-box-sizing: border-box;
-border-radius: 14px;
-animation: fadeUp 0.8s ease-out;
+h1,h2{
+  text-align:center;
+  margin-top:0;
+  color:#0b2f78;
 }
 
-.hero-title {
-text-align: center;
-font-size: 42px;
-font-weight: 700;
-margin-bottom: 20px;
-color: #1e3a8a;
-animation: fadeUp 1s ease-out;
+p{
+  text-align:center;
 }
 
-.hero p {
-text-align: center;
-font-size: 18px;
-margin-top: 0;
-color: #475569;
-animation: fadeUp 1.2s ease-out;
+/* Feature cards */
+.card{
+  background:rgba(240,248,255,.9);
+  border:1px solid rgba(0,128,255,.35);
+  border-radius:16px;
+  padding:14px 18px;
+  margin-bottom:12px;
 }
 
-/* ===== Sections ===== */
-.section {
-padding: 60px 20px;
-background: rgba(255,255,255,0.92);
-backdrop-filter: blur(4px);
-margin: 16px auto;
-border-radius: 14px;
-max-width: 1000px;
-box-sizing: border-box;
-box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-animation: fadeUp 0.9s ease-out;
+.card b{ color:#083180; }
+
+/* ===== CONTACT FORM ===== */
+.contact-box{
+  max-width:520px;
+  margin:0 auto;
 }
 
-.section h2 {
-margin-bottom: 20px;
-text-align: center;
-color: #1e40af;
+label{ font-weight:500; }
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #b9c7d8;
+  margin-top:6px;
+  font-family:Poppins;
 }
 
-.card {
-background: #f0f7ff;
-padding: 18px;
-border-radius: 12px;
-margin: 10px 0;
-color: #334155;
-border-left: 5px solid #60a5fa;
-transition: transform 0.3s ease, box-shadow 0.3s ease;
+button{
+  margin-top:12px;
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  font-weight:600;
+  cursor:pointer;
+  background:#1f59ff;
+  color:#fff;
 }
 
-.card:hover {
-transform: translateY(-6px);
-box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+#contactStatus{
+  text-align:center;
+  margin-top:8px;
+  font-weight:600;
 }
 
-.card b { color: #1e3a8a; }
-
-/* ===== Contact Form ===== */
-.contact-box {
-background: #f8fbff;
-padding: 25px;
-border-radius: 14px;
-margin: 20px auto;
-max-width: 500px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-box-sizing: border-box;
-animation: fadeUp 1s ease-out;
+/* Footer */
+footer{
+  text-align:center;
+  color:#d9dee8;
+  padding:40px 0;
 }
 
-input, textarea {
-width: 100%;
-padding: 12px;
-border-radius: 8px;
-border: 1px solid #cbd5e1;
-margin-top: 8px;
-font-family: Poppins;
-box-sizing: border-box;
-font-size: 15px;
-background: #ffffff;
-color: #1f2937;
-transition: border-color 0.2s, box-shadow 0.2s;
+/* Responsive */
+@media(max-width:720px){
+  .container{margin:38px auto;}
+  .section{padding:22px;}
 }
 
-input:focus, textarea:focus {
-outline: none;
-border-color: #3b82f6;
-box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
-}
-
-button {
-width: 100%;
-padding: 12px;
-border-radius: 8px;
-margin-top: 12px;
-font-family: Poppins;
-font-size: 15px;
-background: #3b82f6;
-color: #ffffff;
-border: none;
-cursor: pointer;
-font-weight: 500;
-transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-transform: translateY(-2px);
-box-shadow: 0 6px 14px rgba(59,130,246,0.35);
-}
-
-#contactStatus {
-margin-top: 8px;
-font-weight: 500;
-text-align: center;
-}
-
-/* ===== Footer ===== */
-footer {
-text-align: center;
-padding: 25px;
-color: #e2e8f0;
-animation: fadeIn 1.2s ease-in;
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-nav { flex-direction: column; align-items: flex-start; }
-.hero, .section { padding: 40px 20px; }
-.hero-title { font-size: 32px; }
-.hero p { font-size: 16px; }
-}
 </style>
 </head>
 
 <body>
 
-<!-- ===== Navigation ===== -->
+<!-- ===== NAVBAR ===== -->
 <nav>
-<div>
-<img src="logo.png" class="logo" alt="Orcado Fish Logo">
-</div>
+  <img src="logo.png" class="logo">
 
-<div>
-<a href="index.html">Home</a>
-<a href="add-boat.html">Add Boat</a>
-<a href="view-boats.html">View Boats</a>
-</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="add-boat.html">Add Boat</a>
+    <a href="view-boats.html">View Boats</a>
+  </div>
 </nav>
 
-<!-- ===== Hero Section ===== -->
-<div class="hero">
-<h1 class="hero-title">Orcado Fish</h1>
-<p>Navigating the deep using real-time satellite data & N8FISH insights.</p>
+<div class="container">
+
+  <!-- ===== HERO ===== -->
+  <div class="section">
+    <h1>Orcado Fish</h1>
+    <p>Navigating the deep using real-time satellite data & N8FISH insights.</p>
+  </div>
+
+  <!-- ===== HOW WE WORK ===== -->
+  <div class="section">
+    <h2>How We Work</h2>
+
+    <div class="card">
+      <b>Smart Scouting</b><br>
+      We target PFZ using thermal + chlorophyll maps to reduce fuel waste.
+    </div>
+
+    <div class="card">
+      <b>Real-Time Oceanics</b><br>
+      SST & wind current monitoring ensures safer operations.
+    </div>
+
+    <div class="card">
+      <b>Sustainable Tech</b><br>
+      We minimize blind fishing using N8FISH analytics.
+    </div>
+  </div>
+
+  <!-- ===== THE CATCH ===== -->
+  <div class="section">
+    <h2>The Catch</h2>
+
+    <div class="card">
+      <b>Traceable Origins</b><br>
+      Every fish logged from GPS catch zone to dock.
+    </div>
+
+    <div class="card">
+      <b>Wild & Fresh</b><br>
+      Sourced from nutrient-rich thermal fronts.
+    </div>
+  </div>
+
+  <!-- ===== CONTACT ===== -->
+  <div class="section">
+    <h2>Contact Us</h2>
+
+    <div class="contact-box">
+      <form id="contactForm">
+        <label>Name</label>
+        <input type="text" id="cName" required>
+
+        <label>Email</label>
+        <input type="email" id="cEmail" required>
+
+        <label>Message</label>
+        <textarea id="cMessage" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <p id="contactStatus"></p>
+      </form>
+    </div>
+  </div>
+
 </div>
 
-<!-- ===== How We Work Section ===== -->
-<div class="section">
-<h2>How We Work</h2>
-
-<div class="card">
-<b>Smart Scouting</b><br>
-We target PFZ using thermal + chlorophyll maps to reduce fuel waste.
-</div>
-
-<div class="card">
-<b>Real-Time Oceanics</b><br>
-SST & wind current monitoring ensures safer operations.
-</div>
-
-<div class="card">
-<b>Sustainable Tech</b><br>
-We minimize blind fishing using N8FISH data analytics.
-</div>
-</div>
-
-<!-- ===== The Catch Section ===== -->
-<div class="section">
-<h2>The Catch</h2>
-
-<div class="card">
-<b>Traceable Origins</b><br>
-Every fish logged from GPS catch zone to dock.
-</div>
-
-<div class="card">
-<b>Wild & Fresh</b><br>
-Sourced from nutrient-rich thermal fronts.
-</div>
-</div>
-
-<!-- ===== Contact Section ===== -->
-<div class="section">
-<h2>Contact Us</h2>
-
-<div class="contact-box">
-<form id="contactForm">
-<label>Name</label>
-<input type="text" id="cName" required>
-
-<label>Email</label>
-<input type="email" id="cEmail" required>
-
-<label>Message</label>
-<textarea id="cMessage" rows="4" required></textarea>
-
-<button type="submit">Send Message</button>
-<p id="contactStatus"></p>
-</form>
-</div>
-</div>
-
-<!-- ===== Footer ===== -->
 <footer>© Orcado Fish</footer>
 
-<!-- ===== Firebase (UNCHANGED) ===== -->
+
+<!-- ===== FIREBASE SCRIPTS ===== -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<!-- your firebase credentials file -->
 <script src="firebase-config.js"></script>
 
 <script>
 document.getElementById("contactForm").addEventListener("submit", function(e){
-e.preventDefault();
+  e.preventDefault();
 
-const msg = {
-name: cName.value.trim(),
-email: cEmail.value.trim(),
-message: cMessage.value.trim(),
-time: Date.now()
-};
+  const msg = {
+    name: cName.value.trim(),
+    email: cEmail.value.trim(),
+    message: cMessage.value.trim(),
+    time: Date.now()
+  };
 
-if(!msg.name || !msg.email || !msg.message){
-contactStatus.style.color = "red";
-contactStatus.innerHTML = "Please fill all fields";
-return;
-}
+  if(!msg.name || !msg.email || !msg.message){
+    contactStatus.style.color="red";
+    contactStatus.innerHTML="Please fill all fields";
+    return;
+  }
 
-database.ref("contacts").push(msg);
+  database.ref("contacts").push(msg);
 
-contactStatus.style.color = "green";
-contactStatus.innerHTML = "Message sent successfully ✔️";
+  contactStatus.style.color="limegreen";
+  contactStatus.innerHTML="Message sent successfully ✔️";
 
-this.reset();
+  this.reset();
 });
 </script>
 
 </body>
 </html>
-

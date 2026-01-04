@@ -16,14 +16,13 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Poppins', sans-serif;
   background: #020d18;
   color: #fff;
+  line-height: 1.7;
 }
 
 /* ================= HERO ================= */
@@ -71,9 +70,7 @@ nav {
   transition: width .3s;
 }
 
-.nav-left a:hover::after {
-  width: 100%;
-}
+.nav-left a:hover::after { width: 100%; }
 
 .nav-center {
   display: flex;
@@ -95,11 +92,6 @@ nav {
   font-size: 28px;
 }
 
-.nav-right {
-  display: flex;
-  justify-content: flex-end;
-}
-
 /* ================= HERO TEXT ================= */
 .hero-content {
   flex: 1;
@@ -113,7 +105,6 @@ nav {
 .hero-content h1 {
   font-family: 'Playfair Display', serif;
   font-size: 56px;
-  letter-spacing: 1px;
   text-shadow: 0 10px 40px rgba(0,0,0,.6);
 }
 
@@ -122,7 +113,6 @@ nav {
   margin-top: 14px;
   font-size: 36px;
   color: #2ecc71;
-  position: relative;
 }
 
 .hero-content h1 span::after {
@@ -158,7 +148,27 @@ section h2 {
   text-align: center;
   font-family: 'Playfair Display', serif;
   font-size: 36px;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
+}
+
+section p {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+  opacity: .9;
+}
+
+/* ================= LISTS ================= */
+.info-list {
+  max-width: 700px;
+  margin: 30px auto 0;
+  list-style: none;
+}
+
+.info-list li {
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 /* ================= CARD GRID ================= */
@@ -177,7 +187,7 @@ section h2 {
   display: flex;
   gap: 14px;
   align-items: center;
-  transition: transform .4s, box-shadow .4s, background .4s, border-color .4s;
+  transition: transform .4s, box-shadow .4s, background .4s;
 }
 
 .card:hover {
@@ -194,11 +204,6 @@ section h2 {
 .card i {
   font-size: 28px;
   color: #2ecc71;
-  transition: transform .4s;
-}
-
-.card:hover i {
-  transform: scale(1.25) rotate(-6deg);
 }
 
 /* ================= FOOTER ================= */
@@ -213,41 +218,9 @@ footer {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-
-  nav {
-    flex-direction: column;
-    gap: 10px;
-    padding: 14px;
-  }
-
-  .nav-left {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .nav-left a {
-    margin: 0;
-    font-size: 11px;
-  }
-
-  .hero-content h1 {
-    font-size: 34px;
-  }
-
-  .hero-content h1 span {
-    font-size: 22px;
-  }
-
-  section h2 {
-    font-size: 28px;
-  }
-
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  .hero-content h1 { font-size: 34px; }
+  .hero-content h1 span { font-size: 22px; }
+  section h2 { font-size: 28px; }
 }
 </style>
 </head>
@@ -255,7 +228,6 @@ footer {
 <body>
 
 <div class="hero">
-
   <nav>
     <div class="nav-left">
       <a href="index.html">ABOUT</a>
@@ -269,54 +241,72 @@ footer {
       <img src="logo.png" alt="Orcado Fish Logo">
       <span>Orcado Fish</span>
     </div>
-
-    <div class="nav-right"></div>
   </nav>
 
   <div class="hero-content">
-    <h1>
-      ORCADO FISH –
+    <h1>ORCADO FISH –<br>
       <span>Global Maritime Intelligence</span>
     </h1>
   </div>
-
 </div>
 
+<!-- ABOUT -->
+<section>
+  <h2>About Orcado Fish</h2>
+  <p>
+    Orcado Fish integrates advanced ocean science with satellite analytics
+    to deliver real-time maritime intelligence that empowers sustainable
+    fishing, precision scouting, and optimized harvest strategies.
+  </p>
+</section>
+
+<!-- HOW WE WORK -->
 <section>
   <h2>How We Work</h2>
-
   <div class="card-grid">
-    <div class="card">
-      <i class="fas fa-fish"></i>
-      Smart PFZ scouting using satellite analytics
-    </div>
+    <div class="card"><i class="fas fa-fish"></i> Smart PFZ scouting using satellite analytics</div>
+    <div class="card"><i class="fas fa-water"></i> Real-time SST & ocean current monitoring</div>
+    <div class="card"><i class="fas fa-leaf"></i> Sustainable fishing powered by N8FISH</div>
+  </div>
+</section>
 
-    <div class="card">
-      <i class="fas fa-water"></i>
-      Real-time SST & ocean current monitoring
-    </div>
+<!-- WHY DATA MATTERS -->
+<section>
+  <h2>Why Our Data Matters</h2>
+  <p>
+    Accurate ocean intelligence transforms modern fisheries by enabling
+    informed, responsible, and efficient decisions at sea.
+  </p>
+  <ul class="info-list">
+    <li>Locate productive fishing zones faster</li>
+    <li>Reduce fuel consumption and operational risk</li>
+    <li>Support sustainable fishing practices</li>
+    <li>Improve traceability and accountability</li>
+  </ul>
+</section>
 
-    <div class="card">
-      <i class="fas fa-leaf"></i>
-      Sustainable fishing powered by N8FISH
+<!-- THE CATCH -->
+<section>
+  <h2>The Catch</h2>
+  <div class="card-grid">
+    <div class="card"><i class="fas fa-map-marked-alt"></i>
+      Know exactly where your fish came from — from GPS coordinates of the catch to the dock.
+    </div>
+    <div class="card"><i class="fas fa-water"></i>
+      Harvested from nutrient-rich thermal fronts where the ocean is most alive.
     </div>
   </div>
 </section>
 
+<!-- WHO BENEFITS -->
 <section>
-  <h2>The Catch</h2>
-
-  <div class="card-grid">
-    <div class="card">
-      <i class="fas fa-map-marked-alt"></i>
-      Know exactly where your fish came from — from GPS coordinates of the catch to the cold chain at the dock.
-    </div>
-
-    <div class="card">
-      <i class="fas fa-water"></i>
-      Harvested from nutrient-rich thermal fronts where the ocean is most alive.
-    </div>
-  </div>
+  <h2>Who Benefits from Orcado Fish</h2>
+  <ul class="info-list">
+    <li>Commercial fishing fleets and captains</li>
+    <li>Marine researchers and oceanographers</li>
+    <li>Fisheries management agencies</li>
+    <li>Sustainability and traceability initiatives</li>
+  </ul>
 </section>
 
 <footer>© 2026 Orcado Fish</footer>

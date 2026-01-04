@@ -151,9 +151,25 @@ section h2 {
   margin-bottom: 36px;
 }
 
-section p {
-  max-width: 850px;
+/* ================= INFO BOX ================= */
+.info-box {
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.06),
+    rgba(255,255,255,0.015)
+  );
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 45px 35px;
+  max-width: 950px;
   margin: auto;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+
+.info-box p {
   text-align: center;
   opacity: .9;
 }
@@ -163,7 +179,6 @@ section p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 26px;
-  margin-top: 40px;
 }
 
 /* ================= CARDS ================= */
@@ -214,6 +229,7 @@ footer {
   .hero-content h1 { font-size: 34px; }
   .hero-content h1 span { font-size: 22px; }
   section h2 { font-size: 28px; }
+  .info-box { padding: 30px 20px; }
   .card { flex-direction: column; }
 }
 </style>
@@ -248,11 +264,13 @@ footer {
 <!-- ABOUT -->
 <section>
   <h2>About Orcado Fish</h2>
-  <p>
-    Orcado Fish integrates advanced ocean science with satellite analytics
-    to deliver real-time maritime intelligence that empowers sustainable
-    fishing, precision scouting, and optimized harvest strategies.
-  </p>
+  <div class="info-box">
+    <p>
+      Orcado Fish integrates advanced ocean science with satellite analytics
+      to deliver real-time maritime intelligence that empowers sustainable
+      fishing, precision scouting, and optimized harvest strategies.
+    </p>
+  </div>
 </section>
 
 <!-- HOW WE WORK -->
@@ -268,11 +286,13 @@ footer {
 <!-- WHY DATA MATTERS -->
 <section>
   <h2>Why Our Data Matters</h2>
-  <div class="card-grid">
-    <div class="card"><i class="fas fa-search-location"></i>Locate productive fishing zones faster</div>
-    <div class="card"><i class="fas fa-gas-pump"></i>Reduce fuel consumption and operational costs</div>
-    <div class="card"><i class="fas fa-seedling"></i>Support responsible and sustainable fishing</div>
-    <div class="card"><i class="fas fa-route"></i>Improve traceability from catch to dock</div>
+  <div class="info-box">
+    <div class="card-grid">
+      <div class="card"><i class="fas fa-search-location"></i>Locate productive fishing zones faster</div>
+      <div class="card"><i class="fas fa-gas-pump"></i>Reduce fuel consumption and operational costs</div>
+      <div class="card"><i class="fas fa-seedling"></i>Support responsible and sustainable fishing</div>
+      <div class="card"><i class="fas fa-route"></i>Improve traceability from catch to dock</div>
+    </div>
   </div>
 </section>
 
@@ -292,11 +312,13 @@ footer {
 <!-- WHO BENEFITS -->
 <section>
   <h2>Who Benefits from Orcado Fish</h2>
-  <div class="card-grid">
-    <div class="card"><i class="fas fa-ship"></i>Commercial fishing fleets and captains</div>
-    <div class="card"><i class="fas fa-flask"></i>Marine researchers and oceanographers</div>
-    <div class="card"><i class="fas fa-balance-scale"></i>Fisheries management agencies</div>
-    <div class="card"><i class="fas fa-globe"></i>Sustainability and traceability initiatives</div>
+  <div class="info-box">
+    <div class="card-grid">
+      <div class="card"><i class="fas fa-ship"></i>Commercial fishing fleets and captains</div>
+      <div class="card"><i class="fas fa-flask"></i>Marine researchers and oceanographers</div>
+      <div class="card"><i class="fas fa-balance-scale"></i>Fisheries management agencies</div>
+      <div class="card"><i class="fas fa-globe"></i>Sustainability and traceability initiatives</div>
+    </div>
   </div>
 </section>
 

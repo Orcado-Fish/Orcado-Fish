@@ -5,14 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orcado Fish</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
 
 body{
@@ -47,10 +44,7 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.nav-left{
-  display:flex;
-  align-items:center;
-}
+.nav-left{display:flex;align-items:center;}
 
 .nav-left a{
   margin-right:22px;
@@ -85,14 +79,8 @@ nav{
   transition:transform .4s;
 }
 
-.nav-center img:hover{
-  transform:rotate(-8deg) scale(1.05);
-}
-
-.nav-center span{
-  font-family:'Playfair Display',serif;
-  font-size:28px;
-}
+.nav-center img:hover{transform:rotate(-8deg) scale(1.05);}
+.nav-center span{font-family:'Playfair Display',serif;font-size:28px;}
 
 /* ================= HERO TEXT ================= */
 .hero-content{
@@ -117,7 +105,7 @@ nav{
   color:#2ecc71;
 }
 
-/* ================= DEFAULT DARK SECTIONS ================= */
+/* ================= BASE SECTION ================= */
 section{
   padding:90px 20px;
   max-width:1100px;
@@ -131,30 +119,31 @@ section h2{
   margin-bottom:36px;
 }
 
-/* ================= LIGHT DESCRIPTION SECTIONS ================= */
+/* ================= SHADED LIGHT SECTIONS ================= */
 .light-section{
-  background:#f6f5ed;
+  background:linear-gradient(
+    145deg,
+    #f2f3f6,
+    #ffffff
+  );
   color:#111;
-  border-radius:26px;
-  margin-top:60px;
-  margin-bottom:60px;
+  border-radius:24px;
   padding:90px 26px;
-  box-shadow:0 30px 70px rgba(0,0,0,.25);
+  margin:60px 0;
+  box-shadow:0 28px 60px rgba(0,0,0,.22);
 }
 
-.light-section h2{
-  color:#111;
-}
+.light-section h2{color:#111;}
 
 /* ================= INFO BOX ================= */
 .info-box{
-  background:#ffffff;
+  background:linear-gradient(145deg,#ffffff,#f3f4f6);
   border:1px solid rgba(0,0,0,.12);
-  border-radius:22px;
-  padding:45px 35px;
+  border-radius:20px;
+  padding:40px 32px;
   max-width:950px;
   margin:auto;
-  box-shadow:0 20px 40px rgba(0,0,0,.18);
+  box-shadow:0 16px 34px rgba(0,0,0,.18);
 }
 
 .info-box p{
@@ -170,14 +159,7 @@ section h2{
   gap:26px;
 }
 
-/* ================= CARDS (WHITE MODE) ================= */
-.light-section .card{
-  background:#ffffff;
-  border:1px solid rgba(0,0,0,.12);
-  color:#111;
-  box-shadow:0 12px 28px rgba(0,0,0,.15);
-}
-
+/* ================= CARDS ================= */
 .card{
   background:rgba(255,255,255,0.03);
   border:1px solid rgba(255,255,255,.12);
@@ -189,16 +171,20 @@ section h2{
   transition:transform .4s, box-shadow .4s, border-color .4s;
 }
 
+.light-section .card{
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,.12);
+  color:#111;
+  box-shadow:0 12px 26px rgba(0,0,0,.15);
+}
+
 .card:hover{
   transform:translateY(-8px);
   border-color:#2ecc71;
   box-shadow:0 18px 40px rgba(46,204,113,.25);
 }
 
-.card i{
-  font-size:28px;
-  color:#2ecc71;
-}
+.card i{font-size:28px;color:#2ecc71;}
 
 /* ================= FOOTER ================= */
 footer{
@@ -209,7 +195,7 @@ footer{
   color:rgba(255,255,255,.6);
 }
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE NAV FIX ================= */
 @media(max-width:768px){
 
   nav{
@@ -240,20 +226,14 @@ footer{
     gap:12px;
   }
 
-  .nav-left a{
-    font-size:12px;
-    letter-spacing:.1em;
-  }
+  .nav-left a{font-size:12px;letter-spacing:.1em;}
 
   .hero-content{padding-top:180px;}
-
   .hero-content h1{font-size:32px;}
   .hero-content h1 span{font-size:20px;}
 
   section h2{font-size:28px;}
-
-  .info-box{padding:30px 20px;}
-
+  .info-box{padding:28px 18px;}
   .card{flex-direction:column;}
 }
 </style>
@@ -350,4 +330,3 @@ footer{
 
 </body>
 </html>
-

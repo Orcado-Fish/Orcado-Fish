@@ -39,17 +39,13 @@ nav{
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,0.08);
   padding:18px 48px;
-
   display:flex;
   align-items:center;
 }
 
-/* LEFT NAV LINKS */
 .nav-left{
   display:flex;
-  align-items:center;
   gap:18px;
-  flex-wrap:wrap;
 }
 
 .nav-left a{
@@ -67,12 +63,10 @@ nav{
   width:0%;
   height:2px;
   background:#2ecc71;
-  transition:width .3s;
+  transition:.3s;
 }
-
 .nav-left a:hover::after{width:100%;}
 
-/* TRUE CENTER LOGO — fixed desktop alignment */
 .nav-center{
   position:absolute;
   left:50%;
@@ -82,18 +76,13 @@ nav{
   gap:10px;
 }
 
-.nav-center img{
-  width:46px;
-  transition:transform .4s;
+.nav-center img{width:46px;}
+.nav-center span{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
 }
 
-.nav-center img:hover{transform:rotate(-8deg) scale(1.05);}
-.nav-center span{font-family:'Playfair Display',serif;font-size:28px;}
-
-/* spacer prevents layout shift */
-.nav-spacer{
-  flex:1;
-}
+.nav-spacer{flex:1;}
 
 /* ================= HERO TEXT ================= */
 .hero-content{
@@ -108,17 +97,16 @@ nav{
 .hero-content h1{
   font-family:'Playfair Display',serif;
   font-size:56px;
-  text-shadow:0 10px 40px rgba(0,0,0,.6);
 }
 
 .hero-content h1 span{
-  display:inline-block;
+  display:block;
   margin-top:14px;
   font-size:36px;
   color:#2ecc71;
 }
 
-/* ================= BASE SECTION ================= */
+/* ================= SECTIONS ================= */
 section{
   padding:90px 20px;
   max-width:1100px;
@@ -138,62 +126,58 @@ section h2{
   color:#111;
   border-radius:24px;
   padding:90px 26px;
-  margin:60px 0;
+  margin:60px auto;
   box-shadow:0 28px 60px rgba(0,0,0,.22);
 }
 
-.light-section h2{color:#111;}
-
 /* ================= INFO BOX ================= */
 .info-box{
-  background:linear-gradient(145deg,#ffffff,#f3f4f6);
-  border:1px solid rgba(0,0,0,.12);
+  background:#ffffff;
   border-radius:20px;
   padding:40px 32px;
-  max-width:950px;
+  max-width:900px;
   margin:auto;
   box-shadow:0 16px 34px rgba(0,0,0,.18);
+  text-align:center;
 }
 
-.info-box p{
-  text-align:center;
-  color:#111;
-  opacity:.9;
-}
+.info-box p{color:#111;}
 
 /* ================= CARD GRID ================= */
 .card-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:26px;
+  justify-items:center;
 }
 
 /* ================= CARDS ================= */
 .card{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,.12);
-  padding:28px;
-  border-radius:18px;
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-  transition:transform .4s, box-shadow .4s, border-color .4s;
-}
-
-.light-section .card{
   background:#ffffff;
   border:1px solid rgba(0,0,0,.12);
-  color:#111;
+  padding:28px;
+  border-radius:18px;
+  width:100%;
+  max-width:320px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  transition:.4s;
   box-shadow:0 12px 26px rgba(0,0,0,.15);
 }
 
 .card:hover{
   transform:translateY(-8px);
-  border-color:#2ecc71;
   box-shadow:0 18px 40px rgba(46,204,113,.25);
+  border-color:#2ecc71;
 }
 
-.card i{font-size:28px;color:#2ecc71;}
+.card i{
+  font-size:28px;
+  color:#2ecc71;
+}
 
 /* ================= FOOTER ================= */
 footer{
@@ -204,51 +188,22 @@ footer{
   color:rgba(255,255,255,.6);
 }
 
-/* ================= LAPTOP / TABLET ================= */
-@media(max-width:1100px){
-  nav{padding:16px 28px;}
-  .hero-content h1{font-size:48px;}
-}
-
 /* ================= MOBILE ================= */
 @media(max-width:768px){
-
   nav{
     flex-direction:column;
     gap:14px;
-    padding:14px 16px;
-    position:fixed;
+    padding:14px;
   }
 
   .nav-center{
     position:static;
     transform:none;
-    order:1;
-    flex-direction:column;
-    gap:6px;
   }
 
-  .nav-center img{width:54px;}
-  .nav-center span{font-size:20px;}
-
-  .nav-left{
-    order:2;
-    justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-
-  .nav-left a{font-size:12px;letter-spacing:.1em;}
-
-  .nav-spacer{display:none;}
-
-  .hero-content{padding-top:180px;}
   .hero-content h1{font-size:32px;}
   .hero-content h1 span{font-size:20px;}
-
   section h2{font-size:28px;}
-  .info-box{padding:28px 18px;}
-  .card{flex-direction:column;}
 }
 </style>
 </head>
@@ -256,93 +211,74 @@ footer{
 <body>
 
 <div class="hero">
-
-  <nav>
-
-    <div class="nav-left">
-      <a href="index.html">ABOUT</a>
-      <a href="add-boat.html">ADD BOAT</a>
-      <a href="view-boats.html">VIEW BOAT</a>
-      <a href="#">FAQS</a>
-      <a href="contact.html">CONTACT</a>
-    </div>
-
-    <div class="nav-center">
-      <img src="logo.png" alt="Orcado Fish Logo">
-      <span>Orcado Fish</span>
-    </div>
-
-    <div class="nav-spacer"></div>
-
-  </nav>
-
-  <div class="hero-content">
-    <h1>
-      ORCADO FISH –
-      <span>Global Maritime Intelligence</span>
-    </h1>
+<nav>
+  <div class="nav-left">
+    <a href="index.html">ABOUT</a>
+    <a href="add-boat.html">ADD BOAT</a>
+    <a href="view-boats.html">VIEW BOAT</a>
+    <a href="#">FAQS</a>
+    <a href="contact.html">CONTACT</a>
   </div>
 
+  <div class="nav-center">
+    <img src="logo.png" alt="Orcado Fish Logo">
+    <span>Orcado Fish</span>
+  </div>
+
+  <div class="nav-spacer"></div>
+</nav>
+
+<div class="hero-content">
+  <h1>
+    ORCADO FISH
+    <span>Global Maritime Intelligence</span>
+  </h1>
+</div>
 </div>
 
-<!-- ABOUT -->
 <section class="light-section">
   <h2>About Orcado Fish</h2>
   <div class="info-box">
     <p>
       Orcado Fish integrates advanced ocean science with satellite analytics
       to deliver real-time maritime intelligence that empowers sustainable
-      fishing, precision scouting, and optimized harvest strategies.
+      fishing and precision scouting.
     </p>
   </div>
 </section>
 
-<!-- HOW WE WORK -->
 <section class="light-section">
   <h2>How We Work</h2>
   <div class="card-grid">
-    <div class="card"><i class="fas fa-fish"></i>Smart PFZ scouting using satellite analytics</div>
-    <div class="card"><i class="fas fa-water"></i>Real-time SST & ocean current monitoring</div>
-    <div class="card"><i class="fas fa-leaf"></i>Sustainable fishing powered by N8FISH</div>
+    <div class="card"><i class="fas fa-fish"></i>Smart PFZ scouting</div>
+    <div class="card"><i class="fas fa-water"></i>Real-time SST monitoring</div>
+    <div class="card"><i class="fas fa-leaf"></i>Sustainable fishing</div>
   </div>
 </section>
 
-<!-- WHY DATA MATTERS -->
 <section class="light-section">
   <h2>Why Our Data Matters</h2>
-  <div class="info-box">
-    <div class="card-grid">
-      <div class="card"><i class="fas fa-search-location"></i>Locate productive fishing zones faster</div>
-      <div class="card"><i class="fas fa-gas-pump"></i>Reduce fuel consumption and operational costs</div>
-      <div class="card"><i class="fas fa-seedling"></i>Support responsible and sustainable fishing</div>
-      <div class="card"><i class="fas fa-route"></i>Improve traceability from catch to dock</div>
-    </div>
+  <div class="card-grid">
+    <div class="card"><i class="fas fa-search-location"></i>Find productive zones</div>
+    <div class="card"><i class="fas fa-gas-pump"></i>Reduce fuel costs</div>
+    <div class="card"><i class="fas fa-route"></i>Improve traceability</div>
   </div>
 </section>
 
-<!-- THE CATCH -->
 <section class="light-section">
   <h2>The Catch</h2>
   <div class="card-grid">
-    <div class="card"><i class="fas fa-map-marked-alt"></i>
-      Know exactly where your fish came from — from GPS coordinates to dock handling.
-    </div>
-    <div class="card"><i class="fas fa-water"></i>
-      Harvested from nutrient-rich thermal fronts where the ocean is most alive.
-    </div>
+    <div class="card"><i class="fas fa-map-marked-alt"></i>Full catch traceability</div>
+    <div class="card"><i class="fas fa-water"></i>Nutrient-rich waters</div>
   </div>
 </section>
 
-<!-- WHO BENEFITS -->
 <section class="light-section">
-  <h2>Who Benefits from Orcado Fish</h2>
-  <div class="info-box">
-    <div class="card-grid">
-      <div class="card"><i class="fas fa-ship"></i>Commercial fishing fleets and captains</div>
-      <div class="card"><i class="fas fa-flask"></i>Marine researchers and oceanographers</div>
-      <div class="card"><i class="fas fa-balance-scale"></i>Fisheries management agencies</div>
-      <div class="card"><i class="fas fa-globe"></i>Sustainability and traceability initiatives</div>
-    </div>
+  <h2>Who Benefits</h2>
+  <div class="card-grid">
+    <div class="card"><i class="fas fa-ship"></i>Fishing fleets</div>
+    <div class="card"><i class="fas fa-flask"></i>Researchers</div>
+    <div class="card"><i class="fas fa-globe"></i>Sustainability groups</div>
   </div>
 </section>
 
@@ -350,3 +286,4 @@ footer{
 
 </body>
 </html>
+

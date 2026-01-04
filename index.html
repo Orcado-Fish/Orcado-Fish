@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orcado Fish</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
 
 body{
   font-family:'Poppins',sans-serif;
@@ -19,17 +22,17 @@ body{
   line-height:1.7;
 }
 
-/* ---------- HERO ---------- */
+/* ================= HERO ================= */
 .hero{
   height:100vh;
   background:
-   linear-gradient(rgba(2,13,24,.55),rgba(2,13,24,.85)),
-   url("Background1.jpg") center/cover no-repeat;
+    linear-gradient(rgba(2,13,24,.55),rgba(2,13,24,.85)),
+    url("Background1.jpg") center/cover no-repeat;
   display:flex;
   flex-direction:column;
 }
 
-/* ---------- NAV ---------- */
+/* ================= NAVBAR ================= */
 nav{
   display:grid;
   grid-template-columns:1fr auto 1fr;
@@ -39,124 +42,165 @@ nav{
   width:100%;
   top:0;
   z-index:10;
-  background:rgba(2,13,24,.75);
+  background:rgba(2,13,24,0.75);
   backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
-.nav-left{display:flex;align-items:center}
+.nav-left{
+  display:flex;
+  align-items:center;
+}
 
 .nav-left a{
   margin-right:22px;
-  color:#dfefff;
   text-decoration:none;
+  color:#dfefff;
   font-size:13px;
   letter-spacing:.12em;
   position:relative;
 }
 
 .nav-left a::after{
-  content:"";position:absolute;left:0;bottom:-6px;
-  width:0;height:2px;background:#2ecc71;transition:.3s;
+  content:"";
+  position:absolute;
+  left:0;bottom:-6px;
+  width:0%;
+  height:2px;
+  background:#2ecc71;
+  transition:width .3s;
 }
-.nav-left a:hover::after{width:100%}
 
-.nav-center{display:flex;align-items:center;gap:10px;justify-content:center}
-.nav-center img{width:46px;transition:.4s}
-.nav-center img:hover{transform:rotate(-8deg) scale(1.05)}
-.nav-center span{font-family:'Playfair Display',serif;font-size:28px}
+.nav-left a:hover::after{width:100%;}
 
-/* ---------- HERO TEXT ---------- */
+.nav-center{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content:center;
+}
+
+.nav-center img{
+  width:46px;
+  transition:transform .4s;
+}
+
+.nav-center img:hover{
+  transform:rotate(-8deg) scale(1.05);
+}
+
+.nav-center span{
+  font-family:'Playfair Display',serif;
+  font-size:28px;
+}
+
+/* ================= HERO TEXT ================= */
 .hero-content{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding-top:120px;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:120px;
 }
+
 .hero-content h1{
   font-family:'Playfair Display',serif;
   font-size:56px;
   text-shadow:0 10px 40px rgba(0,0,0,.6);
 }
+
 .hero-content h1 span{
-  display:block;margin-top:12px;
-  font-size:32px;color:#2ecc71;
+  display:inline-block;
+  margin-top:14px;
+  font-size:36px;
+  color:#2ecc71;
 }
 
-/* =========================================================
-   PROFESSIONAL LIGHT SECTIONS
-========================================================= */
-
-.section-wrapper{
-  background:#f4f6fb;              /* neutral soft light */
-  padding:90px 22px;
-}
-
-.section{
+/* ================= DEFAULT DARK SECTIONS ================= */
+section{
+  padding:90px 20px;
   max-width:1100px;
   margin:auto;
 }
 
-/* Heading style */
-.section-title{
+section h2{
+  text-align:center;
   font-family:'Playfair Display',serif;
-  font-size:34px;
-  text-align:center;
-  color:#0b1b2b;
-  margin-bottom:18px;
+  font-size:36px;
+  margin-bottom:36px;
 }
 
-/* Intro paragraph style */
-.section-intro{
-  max-width:820px;
-  margin:0 auto 46px auto;
-  text-align:center;
-  color:#3a3f45;
-  font-size:18px;
-  line-height:1.8;
+/* ================= LIGHT DESCRIPTION SECTIONS ================= */
+.light-section{
+  background:#f6f5ed;
+  color:#111;
+  border-radius:26px;
+  margin-top:60px;
+  margin-bottom:60px;
+  padding:90px 26px;
+  box-shadow:0 30px 70px rgba(0,0,0,.25);
 }
 
-/* ---------- Feature Cards ---------- */
+.light-section h2{
+  color:#111;
+}
+
+/* ================= INFO BOX ================= */
+.info-box{
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:22px;
+  padding:45px 35px;
+  max-width:950px;
+  margin:auto;
+  box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+.info-box p{
+  text-align:center;
+  color:#111;
+  opacity:.9;
+}
+
+/* ================= CARD GRID ================= */
 .card-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:22px;
+  gap:26px;
+}
+
+/* ================= CARDS (WHITE MODE) ================= */
+.light-section .card{
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,.12);
+  color:#111;
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
 }
 
 .card{
-  background:#ffffff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:14px;
-  padding:22px 20px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,.12);
+  padding:28px;
+  border-radius:18px;
   display:flex;
-  gap:12px;
+  gap:14px;
   align-items:flex-start;
-  color:#111;
-  transition:.35s;
-  box-shadow:0 4px 14px rgba(0,0,0,.06);
+  transition:transform .4s, box-shadow .4s, border-color .4s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 18px 40px rgba(0,0,0,.10);
+  transform:translateY(-8px);
   border-color:#2ecc71;
+  box-shadow:0 18px 40px rgba(46,204,113,.25);
 }
 
 .card i{
-  font-size:22px;
+  font-size:28px;
   color:#2ecc71;
-  margin-top:2px;
 }
 
-/* ---------- Section Info Panel ---------- */
-.info-panel{
-  background:#ffffff;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:14px;
-  padding:26px 26px;
-  box-shadow:0 6px 26px rgba(0,0,0,.08);
-  color:#111;
-}
-
-/* ---------- FOOTER ---------- */
+/* ================= FOOTER ================= */
 footer{
   text-align:center;
   padding:50px 20px;
@@ -165,13 +209,52 @@ footer{
   color:rgba(255,255,255,.6);
 }
 
-/* ---------- MOBILE ---------- */
+/* ================= MOBILE FIX ================= */
 @media(max-width:768px){
-  nav{flex-direction:column;display:flex;gap:10px;padding:12px 16px}
-  .hero-content{padding-top:160px}
-  .hero-content h1{font-size:34px}
-  .hero-content h1 span{font-size:22px}
-  .section-title{font-size:26px}
+
+  nav{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:14px 16px;
+  }
+
+  .nav-center{
+    order:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+
+  .nav-center img{width:54px;}
+  .nav-center span{font-size:20px;}
+
+  .nav-left{
+    order:2;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+
+  .nav-left a{
+    font-size:12px;
+    letter-spacing:.1em;
+  }
+
+  .hero-content{padding-top:180px;}
+
+  .hero-content h1{font-size:32px;}
+  .hero-content h1 span{font-size:20px;}
+
+  section h2{font-size:28px;}
+
+  .info-box{padding:30px 20px;}
+
+  .card{flex-direction:column;}
 }
 </style>
 </head>
@@ -195,98 +278,76 @@ footer{
   </nav>
 
   <div class="hero-content">
-    <h1>ORCADO FISH — <span>Global Maritime Intelligence</span></h1>
+    <h1>
+      ORCADO FISH –
+      <span>Global Maritime Intelligence</span>
+    </h1>
   </div>
 </div>
 
-<!-- ================= ABOUT ================= -->
-<div class="section-wrapper">
-  <div class="section">
-    <h2 class="section-title">About Orcado Fish</h2>
-
-    <p class="section-intro">
-      Orcado Fish combines satellite-driven analytics with applied ocean science
-      to provide real-time insights that improve scouting accuracy, reduce operational
-      risk, and enable sustainable harvest decisions.
+<!-- ABOUT -->
+<section class="light-section">
+  <h2>About Orcado Fish</h2>
+  <div class="info-box">
+    <p>
+      Orcado Fish integrates advanced ocean science with satellite analytics
+      to deliver real-time maritime intelligence that empowers sustainable
+      fishing, precision scouting, and optimized harvest strategies.
     </p>
-
-    <div class="info-panel">
-      <p>
-        Our mission is to empower fleets, researchers, and fisheries networks
-        with actionable maritime intelligence — where science, data and
-        sustainability work together.
-      </p>
-    </div>
   </div>
-</div>
+</section>
 
-<!-- ================= HOW WE WORK ================= -->
-<div class="section-wrapper">
-  <div class="section">
-    <h2 class="section-title">How We Work</h2>
+<!-- HOW WE WORK -->
+<section class="light-section">
+  <h2>How We Work</h2>
+  <div class="card-grid">
+    <div class="card"><i class="fas fa-fish"></i>Smart PFZ scouting using satellite analytics</div>
+    <div class="card"><i class="fas fa-water"></i>Real-time SST & ocean current monitoring</div>
+    <div class="card"><i class="fas fa-leaf"></i>Sustainable fishing powered by N8FISH</div>
+  </div>
+</section>
 
+<!-- WHY DATA MATTERS -->
+<section class="light-section">
+  <h2>Why Our Data Matters</h2>
+  <div class="info-box">
     <div class="card-grid">
-      <div class="card"><i class="fas fa-fish"></i> Precision PFZ scouting powered by satellite analytics</div>
-      <div class="card"><i class="fas fa-water"></i> Real-time SST, chlorophyll & current modelling</div>
-      <div class="card"><i class="fas fa-leaf"></i> Sustainable harvest planning with N8FISH systems</div>
+      <div class="card"><i class="fas fa-search-location"></i>Locate productive fishing zones faster</div>
+      <div class="card"><i class="fas fa-gas-pump"></i>Reduce fuel consumption and operational costs</div>
+      <div class="card"><i class="fas fa-seedling"></i>Support responsible and sustainable fishing</div>
+      <div class="card"><i class="fas fa-route"></i>Improve traceability from catch to dock</div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ================= WHY DATA MATTERS ================= -->
-<div class="section-wrapper">
-  <div class="section">
-    <h2 class="section-title">Why Our Data Matters</h2>
-
-    <p class="section-intro">
-      High-resolution environmental intelligence helps fleets operate efficiently,
-      cut fuel costs, and align harvesting with sustainability standards.
-    </p>
-
-    <div class="info-panel">
-      <div class="card-grid">
-        <div class="card"><i class="fas fa-search-location"></i> Faster identification of productive marine zones</div>
-        <div class="card"><i class="fas fa-gas-pump"></i> Optimized routes and reduced fuel expenditure</div>
-        <div class="card"><i class="fas fa-seedling"></i> Responsible stock protection & resource balance</div>
-        <div class="card"><i class="fas fa-route"></i> Catch-to-dock traceability & reporting integrity</div>
-      </div>
+<!-- THE CATCH -->
+<section class="light-section">
+  <h2>The Catch</h2>
+  <div class="card-grid">
+    <div class="card"><i class="fas fa-map-marked-alt"></i>
+      Know exactly where your fish came from — from GPS coordinates to dock handling.
+    </div>
+    <div class="card"><i class="fas fa-water"></i>
+      Harvested from nutrient-rich thermal fronts where the ocean is most alive.
     </div>
   </div>
-</div>
+</section>
 
-<!-- ================= THE CATCH ================= -->
-<div class="section-wrapper">
-  <div class="section">
-    <h2 class="section-title">The Catch</h2>
-
+<!-- WHO BENEFITS -->
+<section class="light-section">
+  <h2>Who Benefits from Orcado Fish</h2>
+  <div class="info-box">
     <div class="card-grid">
-      <div class="card"><i class="fas fa-map-marked-alt"></i>
-        Every harvest is mapped with verified GPS origin and handling records.
-      </div>
-      <div class="card"><i class="fas fa-water"></i>
-        Sourced along nutrient-rich thermal fronts where ocean ecosystems thrive.
-      </div>
+      <div class="card"><i class="fas fa-ship"></i>Commercial fishing fleets and captains</div>
+      <div class="card"><i class="fas fa-flask"></i>Marine researchers and oceanographers</div>
+      <div class="card"><i class="fas fa-balance-scale"></i>Fisheries management agencies</div>
+      <div class="card"><i class="fas fa-globe"></i>Sustainability and traceability initiatives</div>
     </div>
   </div>
-</div>
-
-<!-- ================= WHO BENEFITS ================= -->
-<div class="section-wrapper">
-  <div class="section">
-    <h2 class="section-title">Who Benefits</h2>
-
-    <div class="info-panel">
-      <div class="card-grid">
-        <div class="card"><i class="fas fa-ship"></i> Commercial fleets & operations teams</div>
-        <div class="card"><i class="fas fa-flask"></i> Marine research & academic networks</div>
-        <div class="card"><i class="fas fa-balance-scale"></i> Fisheries regulation & policy bodies</div>
-        <div class="card"><i class="fas fa-globe"></i> Global traceability & sustainability programs</div>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
 <footer>© 2026 Orcado Fish</footer>
 
 </body>
 </html>
+

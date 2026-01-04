@@ -1,332 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orcado Fish</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orcado Fish</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+  <style>
+    body {
+      margin: 0;
+      font-family: Poppins, Arial, sans-serif;
+      background: #021b2c;
+      color: white;
+    }
 
-body{
-  font-family:'Poppins',sans-serif;
-  background:#020d18;
-  color:#fff;
-  line-height:1.7;
-}
+    /* ========= Layout Helpers ========= */
+    .container {
+      max-width: 1140px;
+      margin: auto;
+      padding: 16px;
+    }
 
-/* ================= HERO ================= */
-.hero{
-  height:100vh;
-  background:
-    linear-gradient(rgba(2,13,24,.55),rgba(2,13,24,.85)),
-    url("Background1.jpg") center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-}
+    section {
+      padding: 60px 0;
+    }
 
-/* ================= NAVBAR ================= */
-nav{
-  display:grid;
-  grid-template-columns:1fr auto 1fr;
-  align-items:center;
-  padding:18px 48px;
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:10;
-  background:rgba(2,13,24,0.75);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
+    /* ========= Navbar ========= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(2, 27, 44, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
 
-.nav-left{display:flex;align-items:center;}
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
 
-.nav-left a{
-  margin-right:22px;
-  text-decoration:none;
-  color:#dfefff;
-  font-size:13px;
-  letter-spacing:.12em;
-  position:relative;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
 
-.nav-left a::after{
-  content:"";
-  position:absolute;
-  left:0;bottom:-6px;
-  width:0%;
-  height:2px;
-  background:#2ecc71;
-  transition:width .3s;
-}
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 24px;
+    }
 
-.nav-left a:hover::after{width:100%;}
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
 
-.nav-center{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  justify-content:center;
-}
+    /* Mobile nav button */
+    .menu-btn {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
 
-.nav-center img{
-  width:46px;
-  transition:transform .4s;
-}
+    /* ========= Hero ========= */
+    .hero {
+      text-align: center;
+      padding: 90px 20px 70px;
+    }
 
-.nav-center img:hover{transform:rotate(-8deg) scale(1.05);}
-.nav-center span{font-family:'Playfair Display',serif;font-size:28px;}
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
 
-/* ================= HERO TEXT ================= */
-.hero-content{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding-top:120px;
-}
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-weight: 300;
+    }
 
-.hero-content h1{
-  font-family:'Playfair Display',serif;
-  font-size:56px;
-  text-shadow:0 10px 40px rgba(0,0,0,.6);
-}
+    /* ========= Two-tone section (Grey + White) ========= */
 
-.hero-content h1 span{
-  display:inline-block;
-  margin-top:14px;
-  font-size:36px;
-  color:#2ecc71;
-}
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
 
-/* ================= BASE SECTION ================= */
-section{
-  padding:90px 20px;
-  max-width:1100px;
-  margin:auto;
-}
+    .left-grey {
+      background: #ececec;
+      color: #111;
+      padding: 50px 40px;
+    }
 
-section h2{
-  text-align:center;
-  font-family:'Playfair Display',serif;
-  font-size:36px;
-  margin-bottom:36px;
-}
+    .right-white {
+      background: #ffffff;
+      color: #111;
+      padding: 50px 40px;
+    }
 
-/* ================= SHADED LIGHT SECTIONS ================= */
-.light-section{
-  background:linear-gradient(
-    145deg,
-    #f2f3f6,
-    #ffffff
-  );
-  color:#111;
-  border-radius:24px;
-  padding:90px 26px;
-  margin:60px 0;
-  box-shadow:0 28px 60px rgba(0,0,0,.22);
-}
+    .split-section h2 {
+      margin-top: 0;
+    }
 
-.light-section h2{color:#111;}
+    /* ========= About block (White Section) ========= */
+    .about {
+      background: #ffffff;
+      color: #111;
+    }
 
-/* ================= INFO BOX ================= */
-.info-box{
-  background:linear-gradient(145deg,#ffffff,#f3f4f6);
-  border:1px solid rgba(0,0,0,.12);
-  border-radius:20px;
-  padding:40px 32px;
-  max-width:950px;
-  margin:auto;
-  box-shadow:0 16px 34px rgba(0,0,0,.18);
-}
+    .about .container {
+      max-width: 900px;
+      text-align: center;
+    }
 
-.info-box p{
-  text-align:center;
-  color:#111;
-  opacity:.9;
-}
+    /* ========= CTA Grey Section ========= */
+    .cta {
+      background: #e5e5e5;
+      color: #111;
+    }
 
-/* ================= CARD GRID ================= */
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:26px;
-}
+    .cta .container {
+      text-align: center;
+      max-width: 800px;
+    }
 
-/* ================= CARDS ================= */
-.card{
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,.12);
-  padding:28px;
-  border-radius:18px;
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-  transition:transform .4s, box-shadow .4s, border-color .4s;
-}
+    /* ========= Footer ========= */
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #ccc;
+      font-size: 14px;
+    }
 
-.light-section .card{
-  background:#ffffff;
-  border:1px solid rgba(0,0,0,.12);
-  color:#111;
-  box-shadow:0 12px 26px rgba(0,0,0,.15);
-}
+    /* ========= Responsive Styles ========= */
+    @media (max-width: 900px) {
+      .split-section {
+        grid-template-columns: 1fr;
+      }
 
-.card:hover{
-  transform:translateY(-8px);
-  border-color:#2ecc71;
-  box-shadow:0 18px 40px rgba(46,204,113,.25);
-}
+      .left-grey,
+      .right-white {
+        padding: 36px 24px;
+      }
+    }
 
-.card i{font-size:28px;color:#2ecc71;}
+    @media (max-width: 720px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 14px;
+        background: rgba(2, 27, 44, 0.97);
+        position: absolute;
+        top: 58px;
+        right: 12px;
+        padding: 16px 18px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,.15);
+      }
 
-/* ================= FOOTER ================= */
-footer{
-  text-align:center;
-  padding:50px 20px;
-  background:linear-gradient(to top,#010912,#020d18);
-  font-size:14px;
-  color:rgba(255,255,255,.6);
-}
+      nav ul.show {
+        display: flex;
+      }
 
-/* ================= MOBILE NAV FIX ================= */
-@media(max-width:768px){
+      .menu-btn {
+        display: block;
+      }
 
-  nav{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-    padding:14px 16px;
-  }
-
-  .nav-center{
-    order:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:6px;
-  }
-
-  .nav-center img{width:54px;}
-  .nav-center span{font-size:20px;}
-
-  .nav-left{
-    order:2;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:12px;
-  }
-
-  .nav-left a{font-size:12px;letter-spacing:.1em;}
-
-  .hero-content{padding-top:180px;}
-  .hero-content h1{font-size:32px;}
-  .hero-content h1 span{font-size:20px;}
-
-  section h2{font-size:28px;}
-  .info-box{padding:28px 18px;}
-  .card{flex-direction:column;}
-}
-</style>
+      .hero h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="hero">
-  <nav>
-    <div class="nav-left">
-      <a href="index.html">ABOUT</a>
-      <a href="add-boat.html">ADD BOAT</a>
-      <a href="view-boats.html">VIEW BOAT</a>
-      <a href="#">FAQS</a>
-      <a href="contact.html">CONTACT</a>
+  <!-- Navbar -->
+  <header>
+    <div class="container nav-bar">
+      <div class="logo">Orcado Fish</div>
+
+      <span class="menu-btn" onclick="toggleMenu()">☰</span>
+
+      <nav>
+        <ul id="mobileMenu">
+          <li><a href="#why">Why Data Matters</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#cta">Catch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Modern Data For Modern Decisions</h1>
+    <p>Helping startups unlock meaningful insights through clean, structured and scalable data.</p>
+  </section>
+
+  <!-- Grey + White Section (unchanged style) -->
+  <section id="why" class="split-section">
+    <div class="left-grey">
+      <h2>Why Data Matters</h2>
+      <p>
+        Data is more than numbers — it's the backbone of every business decision.
+        When structured correctly, it reveals patterns, customer behaviour,
+        operational gaps and growth opportunities.
+      </p>
     </div>
 
-    <div class="nav-center">
-      <img src="logo.png" alt="Orcado Fish Logo">
-      <span>Orcado Fish</span>
+    <div class="right-white">
+      <h2>Smart, Actionable Insights</h2>
+      <p>
+        We help transform raw data into meaningful information through analytics,
+        dashboards, automation pipelines and decision-ready reporting.
+      </p>
     </div>
-  </nav>
+  </section>
 
-  <div class="hero-content">
-    <h1>
-      ORCADO FISH –
-      <span>Global Maritime Intelligence</span>
-    </h1>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section class="light-section">
-  <h2>About Orcado Fish</h2>
-  <div class="info-box">
-    <p>
-      Orcado Fish integrates advanced ocean science with satellite analytics
-      to deliver real-time maritime intelligence that empowers sustainable
-      fishing, precision scouting, and optimized harvest strategies.
-    </p>
-  </div>
-</section>
-
-<!-- HOW WE WORK -->
-<section class="light-section">
-  <h2>How We Work</h2>
-  <div class="card-grid">
-    <div class="card"><i class="fas fa-fish"></i>Smart PFZ scouting using satellite analytics</div>
-    <div class="card"><i class="fas fa-water"></i>Real-time SST & ocean current monitoring</div>
-    <div class="card"><i class="fas fa-leaf"></i>Sustainable fishing powered by N8FISH</div>
-  </div>
-</section>
-
-<!-- WHY DATA MATTERS -->
-<section class="light-section">
-  <h2>Why Our Data Matters</h2>
-  <div class="info-box">
-    <div class="card-grid">
-      <div class="card"><i class="fas fa-search-location"></i>Locate productive fishing zones faster</div>
-      <div class="card"><i class="fas fa-gas-pump"></i>Reduce fuel consumption and operational costs</div>
-      <div class="card"><i class="fas fa-seedling"></i>Support responsible and sustainable fishing</div>
-      <div class="card"><i class="fas fa-route"></i>Improve traceability from catch to dock</div>
+  <!-- About (White Background, same tone) -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
+        Orcado Fish is built with a vision to simplify analytics for founders,
+        students and early-stage startups. We focus on practical,
+        real-world implementation instead of buzzwords and jargon.
+      </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- THE CATCH -->
-<section class="light-section">
-  <h2>The Catch</h2>
-  <div class="card-grid">
-    <div class="card"><i class="fas fa-map-marked-alt"></i>
-      Know exactly where your fish came from — from GPS coordinates to dock handling.
+  <!-- Catch / CTA (Grey Tone) -->
+  <section id="cta" class="cta">
+    <div class="container">
+      <h2>The Catch</h2>
+      <p>
+        If you believe your data has more potential than your current systems reveal,
+        you're in the right place. Let's explore how structured insights can help you grow.
+      </p>
     </div>
-    <div class="card"><i class="fas fa-water"></i>
-      Harvested from nutrient-rich thermal fronts where the ocean is most alive.
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- WHO BENEFITS -->
-<section class="light-section">
-  <h2>Who Benefits from Orcado Fish</h2>
-  <div class="info-box">
-    <div class="card-grid">
-      <div class="card"><i class="fas fa-ship"></i>Commercial fishing fleets and captains</div>
-      <div class="card"><i class="fas fa-flask"></i>Marine researchers and oceanographers</div>
-      <div class="card"><i class="fas fa-balance-scale"></i>Fisheries management agencies</div>
-      <div class="card"><i class="fas fa-globe"></i>Sustainability and traceability initiatives</div>
-    </div>
-  </div>
-</section>
+  <footer>
+    © 2026 Orcado Fish — All Rights Reserved
+  </footer>
 
-<footer>© 2026 Orcado Fish</footer>
+  <script>
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("show");
+    }
+  </script>
 
 </body>
 </html>
